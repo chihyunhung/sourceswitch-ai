@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<style>:root{color-scheme:light}body{margin:0;font-family:system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>SourceSwitch AI</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap">
+</head>
+<body>
+<style>
+/* Layout: one column tool; pick category, pick current + any number of alternatives, read the ranked verdict */
+:root{--bg:#F7F8FA;--surface:#FFFFFF;--line:#DCE1EA;--fg:#14213D;--muted:#5B6578;--navy:#14213D;--blue:#2A78D6;--orange:#EB6834;--good:#1B8A5A;--warn:#C98500;--bad:#C93B3B;--track:#E6EAF1;
+--display:'Space Grotesk',Arial,sans-serif;--body:Inter,Arial,sans-serif}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#0F1626;--surface:#182239;--line:#2C3A57;--fg:#EEF2F8;--muted:#A7B3C8;--navy:#EEF2F8;--blue:#5B9BEA;--orange:#F08457;--good:#3DBF86;--warn:#E0A83A;--bad:#E06060;--track:#243150;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0F1626;--surface:#182239;--line:#2C3A57;--fg:#EEF2F8;--muted:#A7B3C8;--navy:#EEF2F8;--blue:#5B9BEA;--orange:#F08457;--good:#3DBF86;--warn:#E0A83A;--bad:#E06060;--track:#243150;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:15px;line-height:1.5;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 48px}
+.wrap{max-width:1180px;margin:0 auto;display:flex;flex-direction:column;gap:20px}
+header{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:8px;padding-block:28px 8px;border-bottom:1px solid var(--line)}
+header h1{font-family:var(--display);font-size:28px;margin:0;letter-spacing:-0.01em}
+header h1 span{color:var(--orange)}
+header p{margin:0;color:var(--muted)}
+.steps{display:flex;gap:16px;flex-wrap:wrap;color:var(--muted);font-size:13px}.steps b{color:var(--fg)}
+.eyebrow{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600;margin:0 0 6px}
+h2{font-family:var(--display);font-size:20px;margin:0 0 12px}
+section{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px}
+.pills{display:flex;flex-direction:column;gap:8px}
+.pillrow{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.grp{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:600;width:130px}
+.pill{border:1px solid var(--line);background:transparent;color:var(--fg);padding:8px 14px;border-radius:999px;font:500 14px var(--body);cursor:pointer}
+.pill[aria-pressed="true"]{background:var(--navy);color:var(--bg);border-color:var(--navy)}
+.pill:focus-visible,input:focus-visible,select:focus-visible,button:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.tablewrap{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums;min-width:640px}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);white-space:nowrap}
+th{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;font-weight:600}
+td.num,th.num{text-align:right}
+.bar{height:10px;background:var(--track);border-radius:4px;overflow:hidden;min-width:120px}
+.bar i{display:block;height:100%;background:var(--blue);border-radius:4px}
+tr.cur td{background:color-mix(in srgb,var(--blue) 10%,transparent)}
+tr.best td{background:color-mix(in srgb,var(--orange) 12%,transparent)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media (max-width:820px){.grid{grid-template-columns:1fr}}
+.col{display:flex;flex-direction:column;gap:14px}
+label{display:flex;flex-direction:column;gap:4px;font-size:13px;color:var(--muted);min-width:0}
+label small{color:var(--muted);font-weight:400}
+input,select{font:500 15px var(--body);color:var(--fg);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:8px 10px;min-width:0;width:100%}
+.origin{border:1px solid var(--line);border-radius:10px;padding:14px;display:flex;flex-direction:column;gap:10px}
+.origin h3{margin:0;font-size:15px;display:flex;justify-content:space-between;align-items:center;gap:8px}
+.tag{font-size:11px;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:999px;font-weight:600;white-space:nowrap}
+.tag.cur{background:var(--blue);color:#fff}.tag.alt{background:var(--orange);color:#fff}
+.chip{font-size:13px;background:var(--track);border-radius:8px;padding:8px 10px;line-height:1.4}.chip b{font-family:var(--display);font-size:18px}
+.rm{border:1px solid var(--line);background:transparent;color:var(--muted);border-radius:6px;width:26px;height:26px;cursor:pointer;font-size:13px;line-height:1}
+.rm:hover{color:var(--bad);border-color:var(--bad)}
+.alts{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px}
+.fields{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+details summary{cursor:pointer;color:var(--muted);font-size:13px}
+.verdict{border-radius:12px;padding:20px;display:flex;flex-direction:column;gap:12px;background:var(--navy);color:var(--bg)}
+.verdict .flag{font-family:var(--display);font-size:40px;font-weight:700;line-height:1;display:flex;align-items:center;gap:12px}
+.verdict .dot{width:18px;height:18px;border-radius:50%;display:inline-block}
+.verdict p{margin:0}
+.kpis{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.kpi{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px}
+.kpi .v{font-family:var(--display);font-size:24px;font-weight:600;font-variant-numeric:tabular-nums}
+.kpi .l{font-size:12px;color:var(--muted)}
+.flagcell{font-weight:600}
+.sims{display:grid;grid-template-columns:1fr 1fr;gap:8px 16px}
+@media (max-width:560px){.sims{grid-template-columns:1fr}}
+.sim{display:grid;grid-template-columns:120px 1fr 64px;gap:8px;align-items:center;font-size:13px}
+.sim input[type=range]{padding:0;height:24px;accent-color:var(--orange);width:100%}
+.sim .val{text-align:right;font-variant-numeric:tabular-nums;font-weight:600}
+.sim .val.changed{color:var(--orange)}
+.simbar{display:flex;justify-content:space-between;align-items:center;gap:8px;grid-column:1/-1}
+.simout{border-left:3px solid var(--orange);padding:8px 12px;font-size:14px;background:color-mix(in srgb,var(--orange) 8%,transparent);border-radius:0 8px 8px 0}
+.chartbox{border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:flex;flex-direction:column;gap:8px}
+.chartHead{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;flex-wrap:wrap}
+.legend{display:flex;flex-wrap:wrap;gap:10px;font-size:12px;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:5px}.legend i{width:14px;height:3px;border-radius:2px;display:inline-block}
+#xover{width:100%;height:auto;font-family:var(--body)}
+#xover text{fill:var(--muted);font-size:11px;font-variant-numeric:tabular-nums}
+#xover .grid{stroke:var(--line);stroke-width:1}
+#xover .axis{stroke:var(--muted);stroke-width:1}
+.margin{border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:flex;flex-direction:column;gap:10px}
+.margin label{flex-direction:row;align-items:center;gap:10px;font-size:13px}.margin label b{color:var(--fg)}
+.margin input[type=range]{padding:0;height:24px;accent-color:var(--orange);flex:1}
+.prices{display:grid;grid-template-columns:1fr 1fr;gap:10px}.prices div{border:1px solid var(--line);border-radius:8px;padding:10px}.prices .v{font-family:var(--display);font-size:22px;font-weight:600;font-variant-numeric:tabular-nums}.prices small{color:var(--muted)}
+.chart{display:flex;flex-direction:column;gap:6px}
+.row{display:grid;grid-template-columns:140px 1fr 110px;gap:10px;align-items:center;font-size:13px}
+.row .bar{height:16px}.row .v{text-align:right;font-variant-numeric:tabular-nums}
+.note{font-size:12px;color:var(--muted);margin:8px 0 0}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips .pill{font-size:13px;padding:6px 12px}
+.ask{display:flex;gap:8px;align-items:center}
+.ask input{flex:1}
+.thread{display:flex;flex-direction:column;gap:10px;max-height:420px;overflow-y:auto}
+.thread:empty{display:none}
+.msg{border-radius:10px;padding:10px 14px;white-space:pre-wrap;max-width:65ch;line-height:1.5}
+.msg.user{background:var(--track);align-self:flex-end}
+.msg.ai{background:color-mix(in srgb,var(--blue) 8%,transparent);border:1px solid var(--line);align-self:flex-start}
+.msg.err{color:var(--bad)}
+.ref{border:1px dashed var(--line);border-radius:12px;padding:14px 20px}
+.ref summary{cursor:pointer;color:var(--muted);font-size:13px}
+@media (prefers-reduced-motion:no-preference){.bar i{transition:width .25s ease}}
+</style>
+<div class="wrap">
+<header>
+<div><h1>Source<span>Switch</span> AI</h1><p>Should a tariff change change your supplier country? Prototype on U.S. import benchmarks (UN Comtrade 2024, USITC DataWeb 2025) across 5 industries.</p></div>
+<div class="steps"><span><b>1</b> Pick a product</span><span><b>2</b> Pick countries, enter quotes</span><span><b>3</b> Read the flag</span><span><b>4</b> Simulate and ask</span></div>
+</header>
+
+<section>
+<p class="eyebrow">Step 1 · Product category</p>
+<div class="pills" id="pills"></div>
+</section>
+
+<div class="grid">
+<section class="col">
+<p class="eyebrow">Step 2 · Your current origin, the alternatives you want to compare, and your quotes</p>
+<div class="origin"><h3><span>Current origin</span><span class="tag cur">Current</span></h3>
+<select id="curSel" aria-label="Current origin"></select>
+<div class="chip" id="curChip"></div>
+<label>Your FOB quote ($/unit) <small id="curMkt"></small><input id="curFob" type="number" step="0.01" min="0"></label>
+</div>
+<label>Alternatives to compare (add as many as you like)<select id="altAdd"></select></label>
+<div class="alts" id="alts"></div>
+<label>Order quantity (units)<input id="qty" type="number" min="1" step="100" value="10000"></label>
+<details><summary>Advanced: freight per unit and one-time switching cost (prefilled from market data)</summary>
+<div class="fields" style="margin-top:10px" id="adv"></div>
+</details>
+<p class="note">Tariffs are applied automatically: consumer categories use the SourceSwitch 2026 tariff table (MFN plus duties in force since Jul 24, 2026); industrial categories use the 2025 effective duty actually paid per origin (USITC DataWeb). Quotes are prefilled with the market average so the benchmark answer shows before you type.</p>
+</section>
+
+<div class="col">
+<section class="col">
+<p class="eyebrow">Step 3 · Decision</p>
+<div class="verdict"><div class="flag"><span class="dot" id="dot"></span><span id="flag">Stay</span></div><p id="why"></p></div>
+<div class="kpis">
+<div class="kpi"><div class="v" id="savings"></div><div class="l" id="savLbl">savings on this order vs current, after switching cost</div></div>
+<div class="kpi"><div class="v" id="breakeven"></div><div class="l" id="beLbl"></div></div>
+</div>
+<div class="tablewrap"><table id="rank"><thead><tr><th>#</th><th>Origin</th><th class="num">Tariff</th><th class="num">FOB quote</th><th class="num">Landed / unit</th><th class="num">Order total</th><th class="num">vs current</th><th>Flag</th></tr></thead><tbody></tbody></table></div>
+<p class="note">Landed = FOB × (1 + tariff) + freight. Order total for alternatives includes the one-time switching cost. Switch: more than 3% cheaper. Renegotiate: within 3% either way. Stay: current is more than 3% cheaper.</p>
+<div class="margin"><label>Target gross margin <b id="mVal">30%</b><input id="margin" type="range" min="5" max="80" step="1" value="30"></label>
+<div class="prices"><div><small id="pCurLbl"></small><div class="v" id="pCur"></div><small>suggested selling price / unit</small></div><div><small id="pAltLbl"></small><div class="v" id="pAlt"></div><small>suggested selling price / unit</small></div></div></div>
+</section>
+<section id="assist" class="col">
+<p class="eyebrow">Step 4 · Simulate and ask</p>
+<h2>Stress-test the decision</h2>
+<p class="eyebrow" style="margin-top:4px">Simulation · set a tariff for each country</p>
+<div class="sims" id="sims"></div>
+<div class="simout" id="simout"></div>
+<div class="chartbox">
+<div class="chartHead"><div><p class="eyebrow" style="margin:0">Tipping point</p><p id="xoTitle" style="margin:0;font-size:14px;color:var(--muted)"></p></div><label style="flex-direction:row;align-items:center;gap:6px;white-space:nowrap">Vary tariff of<select id="xoSel" style="width:auto"></select></label></div><div class="legend" id="xoLegend"></div>
+<svg id="xover" viewBox="0 0 640 240" role="img" aria-label="Landed cost per unit by origin as the tariff on the current origin changes"></svg>
+</div>
+<div id="assistBlock" class="col" hidden>
+<p class="eyebrow" style="margin-top:8px">Assistant</p>
+<div class="chips">
+<button class="pill" data-q="Explain this decision in plain language: why this flag, what the break-even tariff means for me, and what would change the answer.">Explain this decision</button>
+<button class="pill" data-q="What does the break-even tariff mean, and how close are we to it?">What is break-even?</button>
+<button class="pill" data-q="What non-cost factors should I check before switching suppliers?">What else should I check?</button>
+<button class="pill" data-q="What if the tariff on my current origin dropped by 10 points? Use the whatIf tool.">What if the tariff drops 10 points?</button>
+</div>
+<form id="askForm" class="ask"><input id="askBox" type="text" placeholder="Ask anything, e.g. what if Indonesia quotes $16.00?" autocomplete="off"><button type="submit" class="pill" id="askBtn">Ask</button><button type="button" class="pill" id="stopBtn" hidden>Stop</button></form>
+<div id="thread" class="thread"></div>
+<p class="note">Claude answers from the numbers on this page plus a what-if calculator. It cannot look up tariffs beyond the SourceSwitch table. Guidance, not customs advice.</p>
+</div>
+<p class="note" id="assistOff">The assistant is available when this page is opened inside claude.ai.</p>
+</section>
+</div>
+</div>
+
+
+<details class="ref"><summary>Market reference: 2024 U.S. import averages for every origin in this category (from the dataset)</summary>
+<h2 id="benchTitle" style="margin-top:12px"></h2>
+<div class="tablewrap"><table id="bench"><thead><tr><th>Origin</th><th class="num">U.S. share 2024</th><th class="num">Market FOB</th><th class="num">Freight + ins.</th><th class="num">Tariff applied</th><th class="num">Landed / unit</th><th>Landed vs cheapest</th></tr></thead><tbody></tbody></table></div>
+<p class="note">Market averages per unit by origin, all origins with ≥3% share. Consumer categories: UN Comtrade 2024 with the 2026 tariff table. Industrial categories: USITC DataWeb 2025 with the effective duty paid. Not supplier quotes.</p>
+</details>
+<p class="note">Prototype for UCLA Anderson MSBA Vibathon 2026. Tariffs reconstructed from CBP and USTR notices; verify before relying on a rate. Not customs advice.</p>
+</div>
+<script>
+const DATA={"610462": {"name": "Women's knit cotton trousers", "unit": "unit", "origins": [{"country": "Nicaragua", "share": 3.3, "fob": 2.74, "freight": 0.09, "mfn": 14.9, "extra2026": 10.0, "tariff2026": 24.9, "tariff2024": 14.9}, {"country": "China", "share": 10.6, "fob": 2.69, "freight": 0.18, "mfn": 14.9, "extra2026": 20.0, "tariff2026": 34.9, "tariff2024": 22.4}, {"country": "Indonesia", "share": 12.8, "fob": 2.86, "freight": 0.13, "mfn": 14.9, "extra2026": 10.0, "tariff2026": 24.9, "tariff2024": 14.9}, {"country": "Bangladesh", "share": 6.6, "fob": 2.86, "freight": 0.17, "mfn": 14.9, "extra2026": 10.0, "tariff2026": 24.9, "tariff2024": 14.9}, {"country": "India", "share": 5.8, "fob": 3.16, "freight": 0.14, "mfn": 14.9, "extra2026": 10.0, "tariff2026": 24.9, "tariff2024": 14.9}, {"country": "Viet Nam", "share": 30.4, "fob": 3.34, "freight": 0.16, "mfn": 14.9, "extra2026": 12.5, "tariff2026": 27.4, "tariff2024": 14.9}, {"country": "Cambodia", "share": 8.9, "fob": 4.97, "freight": 0.21, "mfn": 14.9, "extra2026": 10.0, "tariff2026": 24.9, "tariff2024": 14.9}], "industry": "Apparel", "tsrc": "hs6"}, "640399": {"name": "Leather footwear (other)", "unit": "pair", "origins": [{"country": "China", "share": 18.9, "fob": 15.87, "freight": 0.59, "mfn": 8.5, "extra2026": 20.0, "tariff2026": 28.5, "tariff2024": 16.0}, {"country": "Indonesia", "share": 14.0, "fob": 16.52, "freight": 0.56, "mfn": 8.5, "extra2026": 10.0, "tariff2026": 18.5, "tariff2024": 8.5}, {"country": "India", "share": 3.6, "fob": 16.57, "freight": 0.75, "mfn": 8.5, "extra2026": 10.0, "tariff2026": 18.5, "tariff2024": 8.5}, {"country": "Viet Nam", "share": 39.0, "fob": 18.49, "freight": 0.6, "mfn": 8.5, "extra2026": 12.5, "tariff2026": 21.0, "tariff2024": 8.5}, {"country": "Germany", "share": 3.5, "fob": 42.06, "freight": 1.22, "mfn": 8.5, "extra2026": 1.5, "tariff2026": 10.0, "tariff2024": 8.5}, {"country": "Italy", "share": 9.2, "fob": 131.46, "freight": 3.73, "mfn": 8.5, "extra2026": 1.5, "tariff2026": 10.0, "tariff2024": 8.5}], "industry": "Footwear", "tsrc": "hs6"}, "610910": {"name": "Cotton T-shirts", "unit": "unit", "origins": [{"country": "Dominican Rep.", "share": 5.9, "fob": 1.29, "freight": 0.09, "mfn": 16.5, "extra2026": 10.0, "tariff2026": 26.5, "tariff2024": 16.5}, {"country": "Haiti", "share": 4.1, "fob": 1.35, "freight": 0.08, "mfn": 16.5, "extra2026": 10.0, "tariff2026": 26.5, "tariff2024": 16.5}, {"country": "Pakistan", "share": 3.1, "fob": 1.45, "freight": 0.08, "mfn": 16.5, "extra2026": 10.0, "tariff2026": 26.5, "tariff2024": 16.5}, {"country": "China", "share": 6.3, "fob": 1.55, "freight": 0.1, "mfn": 16.5, "extra2026": 20.0, "tariff2026": 36.5, "tariff2024": 24.0}, {"country": "Bangladesh", "share": 10.9, "fob": 1.6, "freight": 0.08, "mfn": 16.5, "extra2026": 10.0, "tariff2026": 26.5, "tariff2024": 16.5}, {"country": "Nicaragua", "share": 12.6, "fob": 1.7, "freight": 0.04, "mfn": 16.5, "extra2026": 10.0, "tariff2026": 26.5, "tariff2024": 16.5}, {"country": "El Salvador", "share": 5.0, "fob": 1.79, "freight": 0.04, "mfn": 16.5, "extra2026": 10.0, "tariff2026": 26.5, "tariff2024": 16.5}, {"country": "India", "share": 8.7, "fob": 1.88, "freight": 0.09, "mfn": 16.5, "extra2026": 10.0, "tariff2026": 26.5, "tariff2024": 16.5}, {"country": "Honduras", "share": 10.5, "fob": 1.99, "freight": 0.04, "mfn": 16.5, "extra2026": 10.0, "tariff2026": 26.5, "tariff2024": 16.5}, {"country": "Mexico", "share": 6.1, "fob": 2.56, "freight": 0.01, "mfn": 16.5, "extra2026": 0.0, "tariff2026": 16.5, "tariff2024": 16.5}, {"country": "Guatemala", "share": 6.0, "fob": 2.67, "freight": 0.06, "mfn": 16.5, "extra2026": 10.0, "tariff2026": 26.5, "tariff2024": 16.5}, {"country": "Viet Nam", "share": 6.4, "fob": 2.64, "freight": 0.09, "mfn": 16.5, "extra2026": 12.5, "tariff2026": 29.0, "tariff2024": 16.5}, {"country": "Peru", "share": 4.3, "fob": 6.36, "freight": 0.13, "mfn": 16.5, "extra2026": 10.0, "tariff2026": 26.5, "tariff2024": 16.5}], "industry": "Apparel", "tsrc": "hs6"}, "940360": {"name": "Wooden furniture (other)", "unit": "unit", "origins": [{"country": "Canada", "share": 5.9, "fob": 15.51, "freight": 0.24, "mfn": 0.0, "extra2026": 0.0, "tariff2026": 0.0, "tariff2024": 0.0}, {"country": "Italy", "share": 4.8, "fob": 16.3, "freight": 1.17, "mfn": 0.0, "extra2026": 10.0, "tariff2026": 10.0, "tariff2024": 0.0}, {"country": "China", "share": 16.1, "fob": 15.4, "freight": 3.17, "mfn": 0.0, "extra2026": 37.5, "tariff2026": 37.5, "tariff2024": 25.0}, {"country": "Malaysia", "share": 4.0, "fob": 22.39, "freight": 2.65, "mfn": 0.0, "extra2026": 10.0, "tariff2026": 10.0, "tariff2024": 0.0}, {"country": "Mexico", "share": 6.5, "fob": 52.98, "freight": 0.74, "mfn": 0.0, "extra2026": 0.0, "tariff2026": 0.0, "tariff2024": 0.0}, {"country": "India", "share": 4.9, "fob": 48.62, "freight": 5.94, "mfn": 0.0, "extra2026": 10.0, "tariff2026": 10.0, "tariff2024": 0.0}, {"country": "Viet Nam", "share": 38.7, "fob": 78.69, "freight": 9.11, "mfn": 0.0, "extra2026": 12.5, "tariff2026": 12.5, "tariff2024": 0.0}, {"country": "Indonesia", "share": 5.2, "fob": 86.09, "freight": 8.15, "mfn": 0.0, "extra2026": 10.0, "tariff2026": 10.0, "tariff2024": 0.0}], "industry": "Furniture", "tsrc": "hs6"}, "8708.99.81": {"name": "Plastic brake hoses", "unit": "unit", "industry": "Automotive parts", "tsrc": "hts10", "origins": [{"country": "Spain", "share": 28.9, "fob": 8.91, "freight": 0.21, "mfn": null, "extra2026": null, "tariff2026": 11.4, "tariff2024": null}, {"country": "Mexico", "share": 60.1, "fob": 9.31, "freight": 0.08, "mfn": null, "extra2026": null, "tariff2026": 9.0, "tariff2024": null}, {"country": "China", "share": 7.9, "fob": 9.27, "freight": 0.33, "mfn": null, "extra2026": null, "tariff2026": 50.3, "tariff2024": null}]}, "8537.10.91": {"name": "CNC controls for machine tools", "unit": "unit", "industry": "Electronics", "tsrc": "hts10", "origins": [{"country": "China", "share": 4.8, "fob": 3330.44, "freight": 145.28, "mfn": null, "extra2026": null, "tariff2026": 37.6, "tariff2024": null}, {"country": "Japan", "share": 22.5, "fob": 3514.85, "freight": 86.68, "mfn": null, "extra2026": null, "tariff2026": 10.8, "tariff2024": null}, {"country": "Vietnam", "share": 7.5, "fob": 3570.72, "freight": 56.99, "mfn": null, "extra2026": null, "tariff2026": 20.5, "tariff2024": null}, {"country": "Israel", "share": 4.4, "fob": 3581.09, "freight": 53.78, "mfn": null, "extra2026": null, "tariff2026": 17.6, "tariff2024": null}, {"country": "Italy", "share": 4.0, "fob": 3623.26, "freight": 70.16, "mfn": null, "extra2026": null, "tariff2026": 8.4, "tariff2024": null}, {"country": "France", "share": 6.9, "fob": 3759.48, "freight": 21.62, "mfn": null, "extra2026": null, "tariff2026": 3.7, "tariff2024": null}, {"country": "Canada", "share": 9.5, "fob": 4155.41, "freight": 15.68, "mfn": null, "extra2026": null, "tariff2026": 1.2, "tariff2024": null}, {"country": "United Kingdom", "share": 4.9, "fob": 4234.16, "freight": 28.68, "mfn": null, "extra2026": null, "tariff2026": 4.8, "tariff2024": null}, {"country": "Austria", "share": 5.1, "fob": 4569.27, "freight": 21.84, "mfn": null, "extra2026": null, "tariff2026": 3.8, "tariff2024": null}, {"country": "Germany", "share": 16.0, "fob": 4666.53, "freight": 134.58, "mfn": null, "extra2026": null, "tariff2026": 10.8, "tariff2024": null}]}, "8516.90.05": {"name": "Heater and heating-apparatus parts", "unit": "unit", "industry": "Electronics", "tsrc": "hts10", "origins": [{"country": "China", "share": 23.5, "fob": 2.51, "freight": 0.15, "mfn": null, "extra2026": null, "tariff2026": 51.3, "tariff2024": null}, {"country": "Mexico", "share": 24.2, "fob": 2.85, "freight": 0.01, "mfn": null, "extra2026": null, "tariff2026": 0.1, "tariff2024": null}, {"country": "Canada", "share": 24.9, "fob": 2.92, "freight": 0.01, "mfn": null, "extra2026": null, "tariff2026": 1.2, "tariff2024": null}, {"country": "Thailand", "share": 5.8, "fob": 5.54, "freight": 0.28, "mfn": null, "extra2026": null, "tariff2026": 12.9, "tariff2024": null}]}, "8708.10.60": {"name": "Motor-vehicle bumper parts", "unit": "unit", "industry": "Automotive parts", "tsrc": "hts10", "origins": [{"country": "China", "share": 3.5, "fob": 10.59, "freight": 1.28, "mfn": null, "extra2026": null, "tariff2026": 59.9, "tariff2024": null}, {"country": "Japan", "share": 6.8, "fob": 12.28, "freight": 1.0, "mfn": null, "extra2026": null, "tariff2026": 17.6, "tariff2024": null}, {"country": "Canada", "share": 12.9, "fob": 13.51, "freight": 0.4, "mfn": null, "extra2026": null, "tariff2026": 10.2, "tariff2024": null}, {"country": "South Korea", "share": 9.8, "fob": 13.14, "freight": 0.96, "mfn": null, "extra2026": null, "tariff2026": 15.8, "tariff2024": null}, {"country": "Mexico", "share": 19.2, "fob": 14.68, "freight": 0.21, "mfn": null, "extra2026": null, "tariff2026": 11.2, "tariff2024": null}, {"country": "Taiwan", "share": 31.6, "fob": 32.22, "freight": 3.7, "mfn": null, "extra2026": null, "tariff2026": 17.3, "tariff2024": null}, {"country": "Germany", "share": 8.4, "fob": 63.59, "freight": 2.7, "mfn": null, "extra2026": null, "tariff2026": 20.9, "tariff2024": null}]}, "8708.80.60": {"name": "Cast-iron suspension parts", "unit": "kg", "industry": "Automotive parts", "tsrc": "hts10", "origins": [{"country": "Brazil", "share": 5.6, "fob": 2.66, "freight": 0.13, "mfn": null, "extra2026": null, "tariff2026": 5.9, "tariff2024": null}, {"country": "South Korea", "share": 47.5, "fob": 2.97, "freight": 0.16, "mfn": null, "extra2026": null, "tariff2026": 10.6, "tariff2024": null}, {"country": "China", "share": 18.2, "fob": 2.95, "freight": 0.22, "mfn": null, "extra2026": null, "tariff2026": 56.2, "tariff2024": null}, {"country": "Mexico", "share": 4.9, "fob": 3.98, "freight": 0.08, "mfn": null, "extra2026": null, "tariff2026": 9.6, "tariff2024": null}, {"country": "Japan", "share": 7.0, "fob": 5.04, "freight": 0.09, "mfn": null, "extra2026": null, "tariff2026": 11.9, "tariff2024": null}, {"country": "Turkey", "share": 6.7, "fob": 6.04, "freight": 0.25, "mfn": null, "extra2026": null, "tariff2026": 17.1, "tariff2024": null}]}};
+const fmt=(n,d=2)=>'$'+n.toLocaleString('en-US',{minimumFractionDigits:d,maximumFractionDigits:d});
+const fmt0=n=>'$'+Math.round(n).toLocaleString('en-US');
+const $=id=>document.getElementById(id);
+let hs=Object.keys(DATA)[1], cur, alts=[], q={}, sim={}, xo=null; // q[country]={fob,frt}
+const landed=(fob,frt,tar)=>fob*(1+tar/100)+frt;
+const O=name=>DATA[hs].origins.find(o=>o.country===name);
+const chip=o=>DATA[hs].tsrc==='hs6'?`Tariff applied: <b>${o.tariff2026.toFixed(1)}%</b><br>MFN ${o.mfn.toFixed(1)}% + additional ${o.extra2026.toFixed(1)}% (2026 table)`:`Tariff applied: <b>${o.tariff2026.toFixed(1)}%</b><br>2025 effective duty paid on this origin (USITC DataWeb)`;
+function init(){const d=DATA[hs];q={};sim={};xo=null;d.origins.forEach(o=>q[o.country]={fob:o.fob,frt:o.freight});cur=d.origins.some(o=>o.country==='China')?'China':d.origins[0].country;
+  const ranked=d.origins.filter(o=>o.country!==cur).sort((a,b)=>landed(a.fob,a.freight,a.tariff2026)-landed(b.fob,b.freight,b.tariff2026));alts=ranked.slice(0,2).map(o=>o.country);buildStep2();}
+function buildPills(){const p=$('pills');p.innerHTML='';const groups={};for(const k in DATA){(groups[DATA[k].industry]??=[]).push(k);}for(const g in groups){const row=document.createElement('div');row.className='pillrow';const lab=document.createElement('span');lab.className='grp';lab.textContent=g;row.appendChild(lab);groups[g].forEach(k=>{const b=document.createElement('button');b.className='pill';b.textContent=DATA[k].name+' · '+(DATA[k].tsrc==='hs6'?'HS ':'HTS ')+k;b.setAttribute('aria-pressed',k===hs);b.onclick=()=>{hs=k;init();render();};row.appendChild(b);});p.appendChild(row);}}
+function buildStep2(){const d=DATA[hs];buildSims();
+  const s=$('curSel');s.innerHTML='';d.origins.forEach(o=>{const op=document.createElement('option');op.value=o.country;op.textContent=o.country;op.selected=o.country===cur;s.appendChild(op);});
+  $('curChip').innerHTML=chip(O(cur));$('curMkt').textContent='· market avg '+fmt(O(cur).fob);$('curFob').value=q[cur].fob;
+  const add=$('altAdd');add.innerHTML='<option value="">Add an alternative…</option>';d.origins.filter(o=>o.country!==cur&&!alts.includes(o.country)).forEach(o=>{const op=document.createElement('option');op.value=o.country;op.textContent=o.country;add.appendChild(op);});
+  add.onchange=e=>{if(e.target.value){alts.push(e.target.value);buildStep2();render();}};
+  const a=$('alts');a.innerHTML='';alts.forEach(n=>{const o=O(n);const box=document.createElement('div');box.className='origin';box.innerHTML=`<h3><span>${n}</span><span style="display:flex;gap:6px;align-items:center"><span class="tag alt">Alternative</span><button class="rm" aria-label="Remove ${n}" title="Remove">✕</button></span></h3><div class="chip">${chip(o)}</div><label>Supplier FOB quote ($/unit) <small>· market avg ${fmt(o.fob)}</small><input type="number" step="0.01" min="0" value="${q[n].fob}" id="fob-${n.replace(/\W/g,'_')}"></label>`;box.querySelector('input').oninput=e=>{q[n].fob=+e.target.value||0;render();};box.querySelector('.rm').onclick=()=>{alts=alts.filter(x=>x!==n);buildStep2();render();};a.appendChild(box);});
+  const adv=$('adv');adv.innerHTML='';[cur,...alts].forEach(n=>{const l=document.createElement('label');l.innerHTML=`Freight + ins., ${n} ($/unit)<input type="number" step="0.01" min="0" value="${q[n].frt}" id="frt-${n.replace(/\W/g,'_')}">`;l.querySelector('input').oninput=e=>{q[n].frt=+e.target.value||0;render();};adv.appendChild(l);});
+  const sw=document.createElement('label');sw.innerHTML=`One-time switching cost ($)<input type="number" step="100" min="0" value="${window._sw||0}" id="switchCost">`;sw.querySelector('input').oninput=e=>{window._sw=+e.target.value||0;render();};adv.appendChild(sw);}
+function buildSims(){const box=$('sims');box.innerHTML='';[cur,...alts].forEach(n=>{const o=O(n);if(sim[n]==null)sim[n]=o.tariff2026;const row=document.createElement('div');row.className='sim';row.innerHTML=`<span>${n}${n===cur?' <span class="tag cur">current</span>':''}</span><input type="range" min="0" max="100" step="0.5" value="${sim[n]}" aria-label="Simulated tariff on ${n}"><span class="val${Math.abs(sim[n]-o.tariff2026)>0.01?' changed':''}">${sim[n].toFixed(1)}%</span>`;
+    const inp=row.querySelector('input'),val=row.querySelector('.val');inp.oninput=e=>{sim[n]=+e.target.value;val.textContent=sim[n].toFixed(1)+'%';val.classList.toggle('changed',Math.abs(sim[n]-o.tariff2026)>0.01);drawChart();};box.appendChild(row);});
+  const bar=document.createElement('div');bar.className='simbar';bar.innerHTML='<span class="note" style="margin:0">Drag to test any tariff. Base rates come from the tariff data; Step 3 stays on the base rates.</span><button class="pill" type="button" id="simReset">Reset to base</button>';bar.querySelector('button').onclick=()=>{[cur,...alts].forEach(n=>sim[n]=O(n).tariff2026);buildSims();drawChart();};box.appendChild(bar);}
+function render(){buildPills();const d=DATA[hs];const qty=Math.max(1,+$('qty').value||1),sw=window._sw||0;
+  const c=O(cur);const cl=landed(q[cur].fob,q[cur].frt,c.tariff2026),ctot=cl*qty;
+  const rows=alts.map(n=>{const o=O(n);const l=landed(q[n].fob,q[n].frt,o.tariff2026);const tot=l*qty+sw;const pct=(ctot-tot)/ctot*100;return{n,o,l,tot,pct,flag:pct>3?'Switch':pct>=-3?'Renegotiate':'Stay'};}).sort((a,b)=>a.tot-b.tot);
+  const tb=$('rank').querySelector('tbody');tb.innerHTML='';
+  const all=[{n:cur,o:c,l:cl,tot:ctot,pct:0,flag:'',cur:true},...rows].sort((a,b)=>a.tot-b.tot);
+  all.forEach((r,i)=>{const tr=document.createElement('tr');tr.className=r.cur?'cur':(rows.length&&r.n===rows[0].n?'best':'');const col=r.flag==='Switch'?'var(--good)':r.flag==='Renegotiate'?'var(--warn)':r.flag==='Stay'?'var(--bad)':'inherit';
+    tr.innerHTML=`<td>${i+1}</td><td>${r.n}${r.cur?' <span class="tag cur">current</span>':''}</td><td class="num">${r.o.tariff2026.toFixed(1)}%</td><td class="num">${fmt(q[r.n].fob)}</td><td class="num"><b>${fmt(r.l)}</b></td><td class="num">${fmt0(r.tot)}</td><td class="num">${r.cur?'—':(r.pct>=0?'−':'+')+Math.abs(r.pct).toFixed(1)+'%'}</td><td class="flagcell" style="color:${col}">${r.flag}</td>`;tb.appendChild(tr);});
+  let flag='Stay',color='var(--bad)',why='Pick at least one alternative to compare.',sav='—',be='—',beL='';
+  if(rows.length){const b=rows[0];const beT=q[cur].fob>0?((b.tot/qty-q[cur].frt)/q[cur].fob-1)*100:0;flag=b.flag;color=b.flag==='Switch'?'var(--good)':b.flag==='Renegotiate'?'var(--warn)':'var(--bad)';
+    sav=(b.pct>=0?'':'−')+fmt0(Math.abs(ctot-b.tot));be=beT.toFixed(1)+'%';beL=`tariff on ${cur} at which ${b.n} ties (today ${c.tariff2026.toFixed(1)}%)`;
+    if(b.flag==='Switch')why=`${b.n} is your best alternative: ${b.pct.toFixed(1)}% cheaper on this order (${fmt0(ctot-b.tot)} after switching cost). ${cur} wins back the order only if its tariff falls below ${beT.toFixed(1)}%.`;
+    else if(b.flag==='Renegotiate')why=`${b.n} is within 3% of ${cur} (${b.pct>=0?b.n+' ahead':cur+' ahead'} by ${Math.abs(b.pct).toFixed(1)}%). Take the ${b.n} quote to your ${cur} supplier before paying switching costs; a ${Math.abs(beT-c.tariff2026).toFixed(1)}-point tariff move flips it.`;
+    else why=`${cur} still lands ${Math.abs(b.pct).toFixed(1)}% cheaper than the best alternative (${b.n}). Switching pays only if the tariff on ${cur} rises above ${beT.toFixed(1)}%${rows.length>1?' or another quote improves':''}.`;}
+  $('flag').textContent=flag;$('dot').style.background=color;$('why').textContent=why;$('savings').textContent=sav;$('savings').style.color=sav.startsWith('−')?'var(--bad)':'var(--good)';$('breakeven').textContent=be;$('beLbl').textContent=beL;
+  drawChart();
+  $('benchTitle').textContent=d.name+(d.tsrc==='hs6'?' · all origins, 2024 market averages':' · all origins, 2025 USITC averages');const br=d.origins.map(o=>({o,l:landed(o.fob,o.freight,o.tariff2026)})).sort((x,y)=>x.l-y.l);const max=br[br.length-1].l;
+  const bb=$('bench').querySelector('tbody');bb.innerHTML='';br.forEach(r=>{const tr=document.createElement('tr');tr.className=r.o.country===cur?'cur':alts.includes(r.o.country)?'best':'';tr.innerHTML=`<td>${r.o.country}</td><td class="num">${r.o.share.toFixed(1)}%</td><td class="num">${fmt(r.o.fob)}</td><td class="num">${fmt(r.o.freight)}</td><td class="num">${r.o.tariff2026.toFixed(1)}%</td><td class="num"><b>${fmt(r.l)}</b></td><td><div class="bar"><i style="width:${Math.max(4,r.l/max*100)}%;background:${r.o.country===cur?'var(--blue)':alts.includes(r.o.country)?'var(--orange)':'var(--muted)'}"></i></div></td>`;bb.appendChild(tr);});}
+
+// ---------- tipping-point chart: landed cost vs tariff on the current origin ----------
+function drawChart(){const d=DATA[hs];const c=O(cur);const qty=Math.max(1,+$('qty').value||1),sw=window._sw||0;
+  const svg=$('xover');const W=640,H=240,L=54,R=16,T=14,B=34;const pw=W-L-R,ph=H-T-B;
+  const all=[cur,...alts];if(!xo||!all.includes(xo))xo=cur;
+  const sel=$('xoSel');sel.innerHTML='';all.forEach(n=>{const op=document.createElement('option');op.value=n;op.textContent=n+(n===cur?' (current)':'');op.selected=n===xo;sel.appendChild(op);});sel.onchange=e=>{xo=e.target.value;drawChart();};
+  if(!alts.length){svg.innerHTML='<text x="'+(W/2)+'" y="'+(H/2)+'" text-anchor="middle">Add an alternative to see the tipping point</text>';$('xoLegend').innerHTML='';$('xoTitle').textContent='';$('simout').textContent='';return;}
+  const tar=n=>sim[n]??O(n).tariff2026;const extra=n=>n===cur?0:sw/qty;   // alternatives carry the switching cost per unit
+  const lineAt=(n,t)=>q[n].fob*(1+t/100)+q[n].frt+extra(n);
+  const t0=tar(xo);const tmin=0,tmax=Math.max(60,Math.ceil((t0+40)/10)*10);
+  const flat=all.filter(n=>n!==xo).map(n=>({n,y:lineAt(n,tar(n))}));
+  const ys=[lineAt(xo,tmin),lineAt(xo,tmax),...flat.map(a=>a.y)];let ymin=Math.min(...ys),ymax=Math.max(...ys);const pad=(ymax-ymin)*0.15||1;ymin-=pad;ymax+=pad;
+  const X=t=>L+(t-tmin)/(tmax-tmin)*pw,Y=v=>T+ph-(v-ymin)/(ymax-ymin)*ph;
+  const palette=['#EB6834','#1BAF7A','#EDA100','#6250D6','#E87BA4','#008300'];const colOf={};let k=0;all.forEach(n=>{colOf[n]=n===cur?'var(--blue)':palette[k++%palette.length];});
+  let g='';
+  for(let i=0;i<=4;i++){const v=ymin+(ymax-ymin)*i/4;g+=`<line class="grid" x1="${L}" x2="${W-R}" y1="${Y(v)}" y2="${Y(v)}"/><text x="${L-6}" y="${Y(v)+4}" text-anchor="end">$${v.toFixed(2)}</text>`;}
+  for(let t=tmin;t<=tmax;t+=10){g+=`<text x="${X(t)}" y="${H-B+16}" text-anchor="middle">${t}%</text>`;}
+  g+=`<line class="axis" x1="${L}" x2="${W-R}" y1="${T+ph}" y2="${T+ph}"/><text x="${L+pw/2}" y="${H-4}" text-anchor="middle">Tariff on ${xo} (%)</text>`;
+  const base=O(xo).tariff2026;g+=`<line x1="${X(t0)}" x2="${X(t0)}" y1="${T}" y2="${T+ph}" stroke="var(--muted)" stroke-width="1" stroke-dasharray="4 4"/><text x="${X(t0)+4}" y="${T+10}">${Math.abs(t0-base)>0.01?'simulated':'base'} ${t0.toFixed(1)}%</text>`;
+  flat.forEach(a=>{g+=`<line x1="${L}" x2="${W-R}" y1="${Y(a.y)}" y2="${Y(a.y)}" stroke="${colOf[a.n]}" stroke-width="2"/>`;});
+  g+=`<line x1="${X(tmin)}" y1="${Y(lineAt(xo,tmin))}" x2="${X(tmax)}" y2="${Y(lineAt(xo,tmax))}" stroke="${colOf[xo]}" stroke-width="2.5"/>`;
+  // crossing that matters: xo = current -> vs cheapest alternative; xo = an alternative -> vs the current origin
+  const ref=xo===cur?flat.reduce((m,a)=>a.y<m.y?a:m):flat.find(a=>a.n===cur);
+  const be=q[xo].fob>0?((ref.y-q[xo].frt-extra(xo))/q[xo].fob-1)*100:null;
+  if(be!=null&&be>=tmin&&be<=tmax){g+=`<circle cx="${X(be)}" cy="${Y(ref.y)}" r="6" fill="var(--orange)" stroke="var(--surface)" stroke-width="2"/><text x="${X(be)+(be>tmax*0.7?-8:8)}" y="${Y(ref.y)-10}" text-anchor="${be>tmax*0.7?'end':'start'}" style="fill:var(--fg);font-weight:600">break-even ${be.toFixed(1)}%</text>`;}
+  g+=`<circle cx="${X(t0)}" cy="${Y(lineAt(xo,t0))}" r="5" fill="${colOf[xo]}" stroke="var(--surface)" stroke-width="2"/>`;
+  svg.innerHTML=g;
+  $('xoLegend').innerHTML=all.map(n=>`<span><i style="background:${colOf[n]}"></i>${n}${n===cur?' (current)':''}${n===xo?' · on x-axis':''}</span>`).join('');
+  if(be==null)$('xoTitle').textContent='';
+  else if(xo===cur)$('xoTitle').textContent=be>t0?`${cur} stays cheapest until its tariff passes ${be.toFixed(1)}% (now ${t0.toFixed(1)}%)`:`${ref.n} is cheaper; ${cur} would need its tariff below ${be.toFixed(1)}% (now ${t0.toFixed(1)}%)`;
+  else $('xoTitle').textContent=be>t0?`${xo} beats ${cur} until its tariff passes ${be.toFixed(1)}% (now ${t0.toFixed(1)}%)`:`${xo} would need its tariff below ${be.toFixed(1)}% to beat ${cur} (now ${t0.toFixed(1)}%)`;
+  const simc=calc({tariff:sim});const changed=all.some(n=>Math.abs(tar(n)-O(n).tariff2026)>0.01);
+  $('simout').textContent=simc.bestAlternative?`${changed?'Simulated':'Base'} tariffs: ${simc.flag}. Best alternative ${simc.bestAlternative} is ${Math.abs(simc.alternatives[0].vsCurrentPct).toFixed(1)}% ${simc.alternatives[0].vsCurrentPct>=0?'cheaper':'dearer'} than ${cur} on this order (${fmt0(Math.abs(simc.current.orderTotal-simc.alternatives[0].orderTotal))}).`:'';
+  const best=flat.length?flat.filter(a=>a.n!==cur).reduce((m,a)=>a.y<m.y?a:m,{y:Infinity,n:''}):{y:Infinity,n:''};
+  const bestAlt=alts.length?alts.map(n=>({n,y:lineAt(n,tar(n))})).reduce((m,a)=>a.y<m.y?a:m):null;
+  // suggested selling price at target margin
+  const m=(+$('margin').value||30)/100;$('mVal').textContent=Math.round(m*100)+'%';
+  const cl=landed(q[cur].fob,q[cur].frt,c.tariff2026);$('pCurLbl').textContent=cur;$('pCur').textContent=fmt(cl/(1-m));const ba=calc().alternatives[0];$('pAltLbl').textContent=ba?ba.origin:'—';$('pAlt').textContent=ba?fmt(ba.landedPerUnit/(1-m)):'—';}
+$('margin').oninput=drawChart;
+$('curSel').onchange=e=>{cur=e.target.value;xo=null;alts=alts.filter(x=>x!==cur);buildStep2();render();};
+$('curFob').oninput=e=>{q[cur].fob=+e.target.value||0;render();};
+$('qty').oninput=render;
+init();render();
+// ---------- what-if calculator shared by the page and the assistant ----------
+function calc(ov={}){const d=DATA[hs];const qty=Math.max(1,ov.qty??(+$('qty').value||1)),sw=ov.sw??(window._sw||0);
+  const tar=n=>ov.tariff&&ov.tariff[n]!=null?+ov.tariff[n]:O(n).tariff2026;const fob=n=>ov.fob&&ov.fob[n]!=null?+ov.fob[n]:q[n].fob;
+  const cl=landed(fob(cur),q[cur].frt,tar(cur)),ctot=cl*qty;
+  const rows=alts.map(n=>{const l=landed(fob(n),q[n].frt,tar(n));const tot=l*qty+sw;const pct=(ctot-tot)/ctot*100;return{origin:n,tariffPct:+tar(n).toFixed(1),fobQuote:+fob(n).toFixed(2),landedPerUnit:+l.toFixed(2),orderTotal:Math.round(tot),vsCurrentPct:+pct.toFixed(1),flag:pct>3?'Switch':pct>=-3?'Renegotiate':'Stay'};}).sort((a,b)=>a.orderTotal-b.orderTotal);
+  const best=rows[0]||null;const beT=best&&fob(cur)>0?((best.orderTotal/qty-q[cur].frt)/fob(cur)-1)*100:null;
+  return{category:d.name,hs,unit:d.unit,qty,switchingCost:sw,current:{origin:cur,tariffPct:+tar(cur).toFixed(1),fobQuote:+fob(cur).toFixed(2),freightPerUnit:q[cur].frt,landedPerUnit:+cl.toFixed(2),orderTotal:Math.round(ctot)},alternatives:rows,bestAlternative:best?best.origin:null,flag:best?best.flag:'none',breakEvenTariffOnCurrentPct:beT==null?null:+beT.toFixed(1)};}
+function scenarioText(){const c=calc();const d=DATA[hs];const tb=n=>{const o=O(n);return d.tsrc==='hs6'?`${n}: tariff ${o.tariff2026.toFixed(1)}% (MFN ${o.mfn}% + additional ${o.extra2026}% under the duties in force since 2026-07-24), 2024 market average FOB $${o.fob}/unit, U.S. import share ${o.share}%`:`${n}: 2025 effective duty paid ${o.tariff2026.toFixed(1)}% of customs value (USITC DataWeb, actual duties collected), 2025 average customs value $${o.fob}/unit, U.S. import share ${o.share}%`;};
+  return `You are SourceSwitch Assistant, helping a small U.S. importer decide whether a tariff change should change their supplier country. Answer in the language the user writes in. Be concrete and brief: under 150 words unless asked for detail. Explain any term you use in one plain sentence (break-even tariff = the tariff rate on the current origin at which the best alternative would cost exactly the same for this order). Use only the numbers below or the whatIf tool; never invent tariff rates, and say when something is outside the data. Remind, when relevant, that switching also depends on capacity, quality, lead time, minimum order, compliance (AD/CVD orders, rules of origin) and the one-time cost of qualifying a new supplier.
+
+Definitions: landed cost per unit = FOB quote × (1 + tariff) + freight and insurance per unit. Order total for an alternative includes the one-time switching cost. Flag rule: Switch if the best alternative is more than 3% cheaper than the current origin on this order; Renegotiate if within 3% either way (use the alternative quote as leverage); Stay if the current origin is more than 3% cheaper.
+
+Current scenario (JSON): ${JSON.stringify(c)}
+
+Simulation the user has set in Step 4 (tariff per origin, %): ${JSON.stringify(sim)}; result under those tariffs: ${JSON.stringify(calc({tariff:sim}))}. If these differ from the base rates, the user is stress-testing; refer to both.
+
+Tariff table for every origin in this category (SourceSwitch data, 2026): ${d.origins.map(o=>tb(o.country)).join('; ')}
+
+Data provenance: consumer categories use 2024 U.S. general imports by origin (UN Comtrade) with tariffs reconstructed from CBP and USTR notices; industrial categories (HTS10) use USITC DataWeb 2025 customs value, CIF and actual duties paid, so their tariff is the historical effective rate, not a 2026 statutory rate. This is guidance, not customs advice.`;}
+const whatIfTool={name:'whatIf',description:'Recompute landed cost, order totals, savings, flag and break-even for a hypothetical change without changing the page. Pass any of: tariff {origin: percent}, fob {origin: dollars per unit}, qty, switchingCost. Returns the same JSON shape as the current scenario.',
+  inputSchema:{type:'object',properties:{tariff:{type:'object',description:'origin name -> total tariff percent, e.g. {"China": 18.5}'},fob:{type:'object',description:'origin name -> FOB quote in USD per unit'},qty:{type:'number'},switchingCost:{type:'number'}}},
+  execute(input){const ov={};if(input.tariff&&typeof input.tariff==='object')ov.tariff=input.tariff;if(input.fob&&typeof input.fob==='object')ov.fob=input.fob;if(input.qty!=null)ov.qty=Number(input.qty);if(input.switchingCost!=null)ov.sw=Number(input.switchingCost);
+    for(const k of Object.keys(ov.tariff||{}).concat(Object.keys(ov.fob||{})))if(!O(k))throw new Error('Unknown origin "'+k+'". Origins in this category: '+DATA[hs].origins.map(o=>o.country).join(', '));return calc(ov);}};
+let sampleFn=null,turns=[],ctl=null;
+function addMsg(cls,text){const m=document.createElement('div');m.className='msg '+cls;m.textContent=text;$('thread').appendChild(m);m.scrollIntoView({block:'nearest'});return m;}
+const errCopy={not_granted:'Claude is not enabled for this page in your account.',rate_limited:'Too many questions for now. Try again in a minute.',refused:'Claude declined to answer that one. Try rephrasing.',upstream_error:'Connection hiccup. Ask again.',tools_unavailable:'What-if questions are not available in this viewer.',sampling_disabled:'Claude is not available on this account.'};
+async function ask(question){if(!sampleFn||!question.trim())return;ctl=new AbortController();$('askBtn').disabled=true;$('stopBtn').hidden=false;
+  addMsg('user',question);const out=addMsg('ai','Thinking...');turns.push({role:'user',content:question});
+  const input=[{role:'user',content:scenarioText()},...turns.slice(-8)];
+  try{const{text}=await sampleFn(input,{cache:false,modelTier:'quick',signal:ctl.signal,tools:[whatIfTool],onText:({text})=>{out.textContent=text;}});turns.push({role:'assistant',content:text});}
+  catch(e){if(e.code==='cancelled'){out.textContent=e.text||'Stopped.';}else{out.textContent=e.text||'';const m=addMsg('ai err',errCopy[e.code]||errCopy.upstream_error);if(['not_granted','sampling_disabled','not_declared','capability_disabled'].includes(e.code)){$('assistBlock').hidden=true;$('assistOff').hidden=false;}}}
+  finally{$('askBtn').disabled=false;$('stopBtn').hidden=true;ctl=null;}}
+(async()=>{try{sampleFn=window.claude?.use?await window.claude.use('sample'):null;}catch(e){sampleFn=null;}if(!sampleFn)return;$('assistBlock').hidden=false;$('assistOff').hidden=true;
+  document.querySelectorAll('.chips .pill').forEach(b=>b.onclick=()=>ask(b.dataset.q));
+  $('askForm').onsubmit=e=>{e.preventDefault();const v=$('askBox').value;$('askBox').value='';ask(v);};
+  $('stopBtn').onclick=()=>ctl?.abort();})();
+</script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+[ {
+  "htsno" : "8518.30",
+  "indent" : "1",
+  "description" : "Headphones and earphones, whether or not combined with a microphone, and sets consisting of a microphone and one or more loudspeakers:",
+  "superior" : null,
+  "units" : [ ],
+  "general" : "",
+  "special" : "",
+  "other" : "",
+  "footnotes" : [ ],
+  "quotaQuantity" : "",
+  "additionalDuties" : "",
+  "addiitionalDuties" : null
+}, {
+  "htsno" : "8518.30.10.00",
+  "indent" : "2",
+  "description" : "Line telephone handsets",
+  "superior" : null,
+  "units" : [ "No." ],
+  "general" : "Free",
+  "special" : "",
+  "other" : "35%",
+  "footnotes" : [ ],
+  "quotaQuantity" : null,
+  "additionalDuties" : null,
+  "addiitionalDuties" : null
+}, {
+  "htsno" : "8518.30.20.00",
+  "indent" : "2",
+  "description" : "Other",
+  "superior" : null,
+  "units" : [ "No." ],
+  "general" : "Free",
+  "special" : "",
+  "other" : "35%",
+  "footnotes" : [ ],
+  "quotaQuantity" : null,
+  "additionalDuties" : null,
+  "addiitionalDuties" : null
+}, {
+  "htsno" : "8518.40",
+  "indent" : "1",
+  "description" : "Audio-frequency electric amplifiers:",
+  "superior" : null,
+  "units" : [ ],
+  "general" : "",
+  "special" : "",
+  "other" : "",
+  "footnotes" : [ ],
+  "quotaQuantity" : "",
+  "additionalDuties" : "",
+  "addiitionalDuties" : null
+} ]

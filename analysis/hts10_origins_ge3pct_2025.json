@@ -1,0 +1,652 @@
+{
+ "HTS10-3924102000": [
+  {
+   "country": "Taiwan",
+   "share": 8.9,
+   "unit_cif": 2.34,
+   "customs_per_unit": 2.05,
+   "freight_per_unit": 0.3,
+   "duty_2025_pct": 16.3
+  },
+  {
+   "country": "China",
+   "share": 54.6,
+   "unit_cif": 3.23,
+   "customs_per_unit": 2.83,
+   "freight_per_unit": 0.4,
+   "duty_2025_pct": 33.9
+  },
+  {
+   "country": "Dominican Republic",
+   "share": 7.4,
+   "unit_cif": 4.2,
+   "customs_per_unit": 3.82,
+   "freight_per_unit": 0.38,
+   "duty_2025_pct": 6.8
+  },
+  {
+   "country": "Mexico",
+   "share": 15.0,
+   "unit_cif": 4.35,
+   "customs_per_unit": 4.27,
+   "freight_per_unit": 0.08,
+   "duty_2025_pct": 0.1
+  }
+ ],
+ "HTS10-3924103000": [
+  {
+   "country": "South Korea",
+   "share": 5.6,
+   "unit_cif": 0.1,
+   "customs_per_unit": 0.1,
+   "freight_per_unit": 0.0,
+   "duty_2025_pct": 8.2
+  },
+  {
+   "country": "Mexico",
+   "share": 16.8,
+   "unit_cif": 0.12,
+   "customs_per_unit": 0.12,
+   "freight_per_unit": 0.0,
+   "duty_2025_pct": 0.5
+  },
+  {
+   "country": "China",
+   "share": 46.8,
+   "unit_cif": 0.34,
+   "customs_per_unit": 0.3,
+   "freight_per_unit": 0.04,
+   "duty_2025_pct": 32.8
+  },
+  {
+   "country": "Dominican Republic",
+   "share": 12.1,
+   "unit_cif": 0.43,
+   "customs_per_unit": 0.39,
+   "freight_per_unit": 0.03,
+   "duty_2025_pct": 6.8
+  },
+  {
+   "country": "Portugal",
+   "share": 3.3,
+   "unit_cif": 2.76,
+   "customs_per_unit": 2.67,
+   "freight_per_unit": 0.09,
+   "duty_2025_pct": 11.7
+  }
+ ],
+ "HTS10-3924104000": [
+  {
+   "country": "Vietnam",
+   "share": 7.6,
+   "unit_cif": 0.02,
+   "customs_per_unit": 0.01,
+   "freight_per_unit": 0.0,
+   "duty_2025_pct": 13.5
+  },
+  {
+   "country": "China",
+   "share": 76.6,
+   "unit_cif": 0.05,
+   "customs_per_unit": 0.05,
+   "freight_per_unit": 0.01,
+   "duty_2025_pct": 24.1
+  },
+  {
+   "country": "Taiwan",
+   "share": 3.2,
+   "unit_cif": 0.11,
+   "customs_per_unit": 0.1,
+   "freight_per_unit": 0.01,
+   "duty_2025_pct": 12.6
+  },
+  {
+   "country": "Mexico",
+   "share": 3.2,
+   "unit_cif": 0.12,
+   "customs_per_unit": 0.11,
+   "freight_per_unit": 0.0,
+   "duty_2025_pct": 0.2
+  }
+ ],
+ "HTS10-8504906500": [
+  {
+   "country": "Vietnam",
+   "share": 5.3,
+   "unit_cif": 21.53,
+   "customs_per_unit": 21.42,
+   "freight_per_unit": 0.11,
+   "duty_2025_pct": 19.0
+  },
+  {
+   "country": "China",
+   "share": 9.0,
+   "unit_cif": 35.38,
+   "customs_per_unit": 34.69,
+   "freight_per_unit": 0.69,
+   "duty_2025_pct": 41.8
+  },
+  {
+   "country": "Taiwan",
+   "share": 8.9,
+   "unit_cif": 37.18,
+   "customs_per_unit": 36.5,
+   "freight_per_unit": 0.67,
+   "duty_2025_pct": 9.4
+  },
+  {
+   "country": "Canada",
+   "share": 9.1,
+   "unit_cif": 39.32,
+   "customs_per_unit": 39.17,
+   "freight_per_unit": 0.15,
+   "duty_2025_pct": 2.3
+  },
+  {
+   "country": "Germany",
+   "share": 3.7,
+   "unit_cif": 40.73,
+   "customs_per_unit": 40.18,
+   "freight_per_unit": 0.55,
+   "duty_2025_pct": 15.6
+  },
+  {
+   "country": "Denmark",
+   "share": 14.1,
+   "unit_cif": 42.3,
+   "customs_per_unit": 38.09,
+   "freight_per_unit": 4.21,
+   "duty_2025_pct": 11.1
+  },
+  {
+   "country": "Mexico",
+   "share": 29.0,
+   "unit_cif": 64.39,
+   "customs_per_unit": 63.89,
+   "freight_per_unit": 0.5,
+   "duty_2025_pct": 4.9
+  },
+  {
+   "country": "Thailand",
+   "share": 9.6,
+   "unit_cif": 87.78,
+   "customs_per_unit": 85.52,
+   "freight_per_unit": 2.26,
+   "duty_2025_pct": 4.2
+  }
+ ],
+ "HTS10-8516900500": [
+  {
+   "country": "China",
+   "share": 23.5,
+   "unit_cif": 2.65,
+   "customs_per_unit": 2.51,
+   "freight_per_unit": 0.15,
+   "duty_2025_pct": 51.3
+  },
+  {
+   "country": "Mexico",
+   "share": 24.2,
+   "unit_cif": 2.86,
+   "customs_per_unit": 2.85,
+   "freight_per_unit": 0.01,
+   "duty_2025_pct": 0.1
+  },
+  {
+   "country": "Canada",
+   "share": 24.9,
+   "unit_cif": 2.94,
+   "customs_per_unit": 2.92,
+   "freight_per_unit": 0.01,
+   "duty_2025_pct": 1.2
+  },
+  {
+   "country": "Thailand",
+   "share": 5.8,
+   "unit_cif": 5.82,
+   "customs_per_unit": 5.54,
+   "freight_per_unit": 0.28,
+   "duty_2025_pct": 12.9
+  }
+ ],
+ "HTS10-8529104040": [
+  {
+   "country": "Mexico",
+   "share": 13.2,
+   "unit_cif": 2.59,
+   "customs_per_unit": 2.52,
+   "freight_per_unit": 0.08,
+   "duty_2025_pct": 5.3
+  },
+  {
+   "country": "China",
+   "share": 4.6,
+   "unit_cif": 3.95,
+   "customs_per_unit": 3.75,
+   "freight_per_unit": 0.2,
+   "duty_2025_pct": 51.9
+  },
+  {
+   "country": "Vietnam",
+   "share": 5.7,
+   "unit_cif": 4.0,
+   "customs_per_unit": 3.83,
+   "freight_per_unit": 0.17,
+   "duty_2025_pct": 10.9
+  },
+  {
+   "country": "Taiwan",
+   "share": 4.4,
+   "unit_cif": 4.52,
+   "customs_per_unit": 4.35,
+   "freight_per_unit": 0.16,
+   "duty_2025_pct": 9.6
+  },
+  {
+   "country": "Germany",
+   "share": 4.0,
+   "unit_cif": 13.55,
+   "customs_per_unit": 13.09,
+   "freight_per_unit": 0.45,
+   "duty_2025_pct": 9.7
+  },
+  {
+   "country": "Canada",
+   "share": 21.4,
+   "unit_cif": 74.06,
+   "customs_per_unit": 73.76,
+   "freight_per_unit": 0.31,
+   "duty_2025_pct": 3.4
+  },
+  {
+   "country": "Israel",
+   "share": 5.3,
+   "unit_cif": 125.03,
+   "customs_per_unit": 124.75,
+   "freight_per_unit": 0.28,
+   "duty_2025_pct": 3.6
+  },
+  {
+   "country": "United Kingdom",
+   "share": 11.7,
+   "unit_cif": 375.32,
+   "customs_per_unit": 371.61,
+   "freight_per_unit": 3.71,
+   "duty_2025_pct": 5.6
+  },
+  {
+   "country": "Sweden",
+   "share": 4.6,
+   "unit_cif": 661.45,
+   "customs_per_unit": 654.73,
+   "freight_per_unit": 6.72,
+   "duty_2025_pct": 6.8
+  },
+  {
+   "country": "South Africa",
+   "share": 3.5,
+   "unit_cif": 766.03,
+   "customs_per_unit": 762.64,
+   "freight_per_unit": 3.39,
+   "duty_2025_pct": 14.3
+  }
+ ],
+ "HTS10-8537109130": [
+  {
+   "country": "China",
+   "share": 4.8,
+   "unit_cif": 3475.72,
+   "customs_per_unit": 3330.44,
+   "freight_per_unit": 145.28,
+   "duty_2025_pct": 37.6
+  },
+  {
+   "country": "Japan",
+   "share": 22.5,
+   "unit_cif": 3601.53,
+   "customs_per_unit": 3514.85,
+   "freight_per_unit": 86.68,
+   "duty_2025_pct": 10.8
+  },
+  {
+   "country": "Vietnam",
+   "share": 7.5,
+   "unit_cif": 3627.72,
+   "customs_per_unit": 3570.72,
+   "freight_per_unit": 56.99,
+   "duty_2025_pct": 20.5
+  },
+  {
+   "country": "Israel",
+   "share": 4.4,
+   "unit_cif": 3634.87,
+   "customs_per_unit": 3581.09,
+   "freight_per_unit": 53.78,
+   "duty_2025_pct": 17.6
+  },
+  {
+   "country": "Italy",
+   "share": 4.0,
+   "unit_cif": 3693.42,
+   "customs_per_unit": 3623.26,
+   "freight_per_unit": 70.16,
+   "duty_2025_pct": 8.4
+  },
+  {
+   "country": "France",
+   "share": 6.9,
+   "unit_cif": 3781.1,
+   "customs_per_unit": 3759.48,
+   "freight_per_unit": 21.62,
+   "duty_2025_pct": 3.7
+  },
+  {
+   "country": "Canada",
+   "share": 9.5,
+   "unit_cif": 4171.1,
+   "customs_per_unit": 4155.41,
+   "freight_per_unit": 15.68,
+   "duty_2025_pct": 1.2
+  },
+  {
+   "country": "United Kingdom",
+   "share": 4.9,
+   "unit_cif": 4262.84,
+   "customs_per_unit": 4234.16,
+   "freight_per_unit": 28.68,
+   "duty_2025_pct": 4.8
+  },
+  {
+   "country": "Austria",
+   "share": 5.1,
+   "unit_cif": 4591.1,
+   "customs_per_unit": 4569.27,
+   "freight_per_unit": 21.84,
+   "duty_2025_pct": 3.8
+  },
+  {
+   "country": "Germany",
+   "share": 16.0,
+   "unit_cif": 4801.11,
+   "customs_per_unit": 4666.53,
+   "freight_per_unit": 134.58,
+   "duty_2025_pct": 10.8
+  }
+ ],
+ "HTS10-8539293050": [
+  {
+   "country": "Italy",
+   "share": 5.0,
+   "unit_cif": 0.18,
+   "customs_per_unit": 0.17,
+   "freight_per_unit": 0.0,
+   "duty_2025_pct": 6.9
+  },
+  {
+   "country": "Taiwan",
+   "share": 5.6,
+   "unit_cif": 0.24,
+   "customs_per_unit": 0.23,
+   "freight_per_unit": 0.01,
+   "duty_2025_pct": 9.0
+  },
+  {
+   "country": "Slovakia",
+   "share": 23.1,
+   "unit_cif": 0.3,
+   "customs_per_unit": 0.29,
+   "freight_per_unit": 0.01,
+   "duty_2025_pct": 8.5
+  },
+  {
+   "country": "Japan",
+   "share": 34.4,
+   "unit_cif": 0.32,
+   "customs_per_unit": 0.31,
+   "freight_per_unit": 0.01,
+   "duty_2025_pct": 9.1
+  },
+  {
+   "country": "China",
+   "share": 23.0,
+   "unit_cif": 0.32,
+   "customs_per_unit": 0.31,
+   "freight_per_unit": 0.01,
+   "duty_2025_pct": 30.4
+  },
+  {
+   "country": "Germany",
+   "share": 3.9,
+   "unit_cif": 1.99,
+   "customs_per_unit": 1.97,
+   "freight_per_unit": 0.03,
+   "duty_2025_pct": 4.0
+  }
+ ],
+ "HTS10-8708106050": [
+  {
+   "country": "China",
+   "share": 3.5,
+   "unit_cif": 11.86,
+   "customs_per_unit": 10.59,
+   "freight_per_unit": 1.28,
+   "duty_2025_pct": 59.9
+  },
+  {
+   "country": "Japan",
+   "share": 6.8,
+   "unit_cif": 13.27,
+   "customs_per_unit": 12.28,
+   "freight_per_unit": 1.0,
+   "duty_2025_pct": 17.6
+  },
+  {
+   "country": "Canada",
+   "share": 12.9,
+   "unit_cif": 13.91,
+   "customs_per_unit": 13.51,
+   "freight_per_unit": 0.4,
+   "duty_2025_pct": 10.2
+  },
+  {
+   "country": "South Korea",
+   "share": 9.8,
+   "unit_cif": 14.09,
+   "customs_per_unit": 13.14,
+   "freight_per_unit": 0.96,
+   "duty_2025_pct": 15.8
+  },
+  {
+   "country": "Mexico",
+   "share": 19.2,
+   "unit_cif": 14.88,
+   "customs_per_unit": 14.68,
+   "freight_per_unit": 0.21,
+   "duty_2025_pct": 11.2
+  },
+  {
+   "country": "Taiwan",
+   "share": 31.6,
+   "unit_cif": 35.92,
+   "customs_per_unit": 32.22,
+   "freight_per_unit": 3.7,
+   "duty_2025_pct": 17.3
+  },
+  {
+   "country": "Germany",
+   "share": 8.4,
+   "unit_cif": 66.3,
+   "customs_per_unit": 63.59,
+   "freight_per_unit": 2.7,
+   "duty_2025_pct": 20.9
+  }
+ ],
+ "HTS10-8708508500": [
+  {
+   "country": "India",
+   "share": 5.2,
+   "unit_cif": 20.71,
+   "customs_per_unit": 19.77,
+   "freight_per_unit": 0.94,
+   "duty_2025_pct": 19.4
+  },
+  {
+   "country": "China",
+   "share": 20.8,
+   "unit_cif": 27.83,
+   "customs_per_unit": 25.95,
+   "freight_per_unit": 1.88,
+   "duty_2025_pct": 53.8
+  },
+  {
+   "country": "South Korea",
+   "share": 9.2,
+   "unit_cif": 29.2,
+   "customs_per_unit": 27.69,
+   "freight_per_unit": 1.52,
+   "duty_2025_pct": 12.8
+  },
+  {
+   "country": "Malaysia",
+   "share": 3.7,
+   "unit_cif": 31.46,
+   "customs_per_unit": 29.55,
+   "freight_per_unit": 1.91,
+   "duty_2025_pct": 24.4
+  },
+  {
+   "country": "Japan",
+   "share": 10.1,
+   "unit_cif": 59.39,
+   "customs_per_unit": 58.39,
+   "freight_per_unit": 1.0,
+   "duty_2025_pct": 12.2
+  },
+  {
+   "country": "Mexico",
+   "share": 46.7,
+   "unit_cif": 71.3,
+   "customs_per_unit": 70.83,
+   "freight_per_unit": 0.48,
+   "duty_2025_pct": 6.6
+  }
+ ],
+ "HTS10-8708704548": [
+  {
+   "country": "Morocco",
+   "share": 4.8,
+   "unit_cif": 63.88,
+   "customs_per_unit": 56.66,
+   "freight_per_unit": 7.22,
+   "duty_2025_pct": 18.4
+  },
+  {
+   "country": "Mexico",
+   "share": 41.2,
+   "unit_cif": 75.29,
+   "customs_per_unit": 74.58,
+   "freight_per_unit": 0.71,
+   "duty_2025_pct": 0.8
+  },
+  {
+   "country": "China",
+   "share": 30.2,
+   "unit_cif": 78.48,
+   "customs_per_unit": 73.39,
+   "freight_per_unit": 5.1,
+   "duty_2025_pct": 53.7
+  },
+  {
+   "country": "Thailand",
+   "share": 9.2,
+   "unit_cif": 81.11,
+   "customs_per_unit": 77.58,
+   "freight_per_unit": 3.53,
+   "duty_2025_pct": 15.8
+  },
+  {
+   "country": "South Korea",
+   "share": 5.8,
+   "unit_cif": 89.48,
+   "customs_per_unit": 82.79,
+   "freight_per_unit": 6.69,
+   "duty_2025_pct": 5.5
+  }
+ ],
+ "HTS10-8708806000": [
+  {
+   "country": "Brazil",
+   "share": 5.6,
+   "unit_cif": 2.79,
+   "customs_per_unit": 2.66,
+   "freight_per_unit": 0.13,
+   "duty_2025_pct": 5.9
+  },
+  {
+   "country": "South Korea",
+   "share": 47.5,
+   "unit_cif": 3.13,
+   "customs_per_unit": 2.97,
+   "freight_per_unit": 0.16,
+   "duty_2025_pct": 10.6
+  },
+  {
+   "country": "China",
+   "share": 18.2,
+   "unit_cif": 3.17,
+   "customs_per_unit": 2.95,
+   "freight_per_unit": 0.22,
+   "duty_2025_pct": 56.2
+  },
+  {
+   "country": "Mexico",
+   "share": 4.9,
+   "unit_cif": 4.06,
+   "customs_per_unit": 3.98,
+   "freight_per_unit": 0.08,
+   "duty_2025_pct": 9.6
+  },
+  {
+   "country": "Japan",
+   "share": 7.0,
+   "unit_cif": 5.13,
+   "customs_per_unit": 5.04,
+   "freight_per_unit": 0.09,
+   "duty_2025_pct": 11.9
+  },
+  {
+   "country": "Turkey",
+   "share": 6.7,
+   "unit_cif": 6.29,
+   "customs_per_unit": 6.04,
+   "freight_per_unit": 0.25,
+   "duty_2025_pct": 17.1
+  }
+ ],
+ "HTS10-8708998105": [
+  {
+   "country": "Spain",
+   "share": 28.9,
+   "unit_cif": 9.12,
+   "customs_per_unit": 8.91,
+   "freight_per_unit": 0.21,
+   "duty_2025_pct": 11.4
+  },
+  {
+   "country": "Mexico",
+   "share": 60.1,
+   "unit_cif": 9.39,
+   "customs_per_unit": 9.31,
+   "freight_per_unit": 0.08,
+   "duty_2025_pct": 9.0
+  },
+  {
+   "country": "China",
+   "share": 7.9,
+   "unit_cif": 9.6,
+   "customs_per_unit": 9.27,
+   "freight_per_unit": 0.33,
+   "duty_2025_pct": 50.3
+  }
+ ]
+}

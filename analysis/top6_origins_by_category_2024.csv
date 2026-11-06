@@ -1,0 +1,139 @@
+hs,category,kept_step1,rank_by_share,partner,iso,share_2024_pct,unit_cif_usd,unit_fob_usd,freight_ins_pct_of_fob,gap_vs_cheapest_pct,tariff_2024_pct,tariff_2025avg_pct,tariff_2026_pct,landed_2024,landed_2025avg,landed_2026
+420212,"Suitcases/briefcases, plastic/textile",False,1,China,CHN,38.08,10.34,9.19,12.5,0.0,45.0,79.3,57.5,14.99,18.53,16.28
+420212,"Suitcases/briefcases, plastic/textile",False,2,Thailand,THA,18.8,41.7,38.55,8.17,303.47,20.0,31.1,32.5,50.04,54.67,55.26
+420212,"Suitcases/briefcases, plastic/textile",False,3,Cambodia,KHM,12.87,22.55,20.24,11.41,118.17,20.0,31.1,30.0,27.06,29.56,29.31
+420212,"Suitcases/briefcases, plastic/textile",False,4,Indonesia,IDN,10.08,31.27,29.7,5.29,202.54,20.0,31.1,30.0,37.52,40.99,40.65
+420212,"Suitcases/briefcases, plastic/textile",False,5,Canada,CAN,3.58,23.27,22.91,1.57,125.09,20.0,20.0,20.0,27.92,27.92,27.92
+420212,"Suitcases/briefcases, plastic/textile",False,6,Viet Nam,VNM,3.16,33.09,31.78,4.12,220.13,20.0,31.5,32.5,39.71,43.51,43.84
+420221,"Handbags, leather",False,1,Italy,ITA,34.52,362.47,351.62,3.08,1156.06,9.0,14.81,10.0,395.09,416.16,398.72
+420221,"Handbags, leather",False,2,France,FRA,25.97,1262.81,1210.61,4.31,4276.01,9.0,14.81,10.0,1376.47,1449.88,1389.09
+420221,"Handbags, leather",False,3,Viet Nam,VNM,9.69,36.89,35.88,2.83,27.84,9.0,20.5,21.5,40.21,44.46,44.82
+420221,"Handbags, leather",False,4,Cambodia,KHM,8.56,33.86,32.21,5.11,17.33,9.0,20.1,19.0,36.9,40.66,40.29
+420221,"Handbags, leather",False,5,India,IND,3.92,28.86,27.19,6.15,0.0,9.0,31.4,19.0,31.45,37.92,34.34
+420221,"Handbags, leather",False,6,Spain,ESP,3.62,646.39,617.27,4.72,2139.93,9.0,14.81,10.0,704.57,742.15,711.03
+420222,"Handbags, plastic/textile",False,1,Cambodia,KHM,29.71,9.16,8.44,8.53,134.17,17.6,28.7,27.6,10.77,11.78,11.68
+420222,"Handbags, plastic/textile",False,2,China,CHN,18.7,3.91,3.65,7.17,0.0,42.6,76.9,55.1,5.58,6.92,6.06
+420222,"Handbags, plastic/textile",False,3,France,FRA,14.95,203.2,192.0,5.84,5096.89,17.6,21.0,17.6,238.97,245.87,238.97
+420222,"Handbags, plastic/textile",False,4,Italy,ITA,11.51,215.21,208.47,3.23,5403.92,17.6,21.0,17.6,253.08,260.4,253.08
+420222,"Handbags, plastic/textile",False,5,Indonesia,IDN,6.29,15.24,14.1,8.1,289.79,17.6,28.7,27.6,17.92,19.62,19.45
+420222,"Handbags, plastic/textile",False,6,Viet Nam,VNM,5.88,9.06,8.5,6.63,131.83,17.6,29.1,30.1,10.66,11.7,11.79
+610462,Women's cotton trousers (knit),True,1,Viet Nam,VNM,30.37,3.5,3.34,4.79,22.17,14.9,26.4,27.4,4.02,4.43,4.46
+610462,Women's cotton trousers (knit),True,2,Indonesia,IDN,12.84,2.99,2.86,4.57,4.4,14.9,26.0,24.9,3.44,3.77,3.74
+610462,Women's cotton trousers (knit),True,3,China,CHN,10.61,2.87,2.69,6.58,0.0,22.4,56.7,34.9,3.51,4.49,3.87
+610462,Women's cotton trousers (knit),True,4,Cambodia,KHM,8.9,5.18,4.97,4.32,80.7,14.9,26.0,24.9,5.95,6.53,6.47
+610462,Women's cotton trousers (knit),True,5,Bangladesh,BGD,6.55,3.02,2.86,5.89,5.52,14.9,26.4,24.9,3.48,3.82,3.78
+610462,Women's cotton trousers (knit),True,6,India,IND,5.76,3.3,3.16,4.42,14.97,14.9,37.3,24.9,3.79,4.52,4.12
+610910,Cotton T-shirts,True,1,Nicaragua,NIC,12.56,1.73,1.7,2.19,5.42,16.5,27.1,26.5,2.02,2.2,2.19
+610910,Cotton T-shirts,True,2,Bangladesh,BGD,10.87,1.68,1.6,4.92,2.07,16.5,28.0,26.5,1.95,2.15,2.12
+610910,Cotton T-shirts,True,3,Honduras,HND,10.48,2.03,1.99,2.11,23.64,16.5,23.9,26.5,2.37,2.52,2.57
+610910,Cotton T-shirts,True,4,India,IND,8.75,1.97,1.88,4.52,19.87,16.5,38.9,26.5,2.29,2.74,2.49
+610910,Cotton T-shirts,True,5,Viet Nam,VNM,6.39,2.74,2.64,3.52,66.48,16.5,28.0,29.0,3.19,3.5,3.53
+610910,Cotton T-shirts,True,6,China,CHN,6.3,1.64,1.55,6.28,0.0,24.0,58.3,36.5,2.04,2.6,2.24
+611020,Cotton sweaters/pullovers,True,1,Viet Nam,VNM,19.01,4.81,4.62,3.97,23.15,16.5,28.0,29.0,5.6,6.15,6.2
+611020,Cotton sweaters/pullovers,True,2,China,CHN,14.08,4.36,4.13,5.63,11.72,24.0,58.3,36.5,5.41,6.9,5.95
+611020,Cotton sweaters/pullovers,True,3,Cambodia,KHM,8.87,6.25,6.02,3.79,60.14,16.5,27.6,26.5,7.28,7.98,7.91
+611020,Cotton sweaters/pullovers,True,4,Bangladesh,BGD,7.15,3.9,3.71,5.28,0.0,16.5,28.0,26.5,4.55,5.0,4.94
+611020,Cotton sweaters/pullovers,True,5,Indonesia,IDN,6.25,4.6,4.4,4.52,17.84,16.5,27.6,26.5,5.36,5.87,5.82
+611020,Cotton sweaters/pullovers,True,6,Pakistan,PAK,5.82,3.99,3.74,6.62,2.28,16.5,27.6,26.5,4.65,5.09,5.05
+611030,Man-made fibre sweaters,False,1,China,CHN,20.58,4.26,3.99,6.93,0.0,39.5,73.8,52.0,5.95,7.41,6.48
+611030,Man-made fibre sweaters,False,2,Viet Nam,VNM,16.17,6.25,6.0,4.18,46.57,32.0,43.5,44.5,8.25,8.97,9.03
+611030,Man-made fibre sweaters,False,3,Honduras,HND,9.38,4.82,4.69,2.7,12.92,32.0,39.4,42.0,6.36,6.71,6.84
+611030,Man-made fibre sweaters,False,4,Jordan,JOR,7.21,8.43,8.15,3.37,97.67,32.0,39.4,42.0,11.13,11.75,11.97
+611030,Man-made fibre sweaters,False,5,Indonesia,IDN,4.97,6.34,6.07,4.43,48.58,32.0,43.1,42.0,8.36,9.07,9.0
+611030,Man-made fibre sweaters,False,6,El Salvador,SLV,4.85,6.63,6.4,3.59,55.38,32.0,39.4,42.0,8.75,9.24,9.41
+620342,Men's cotton trousers,False,1,Bangladesh,BGD,34.48,5.95,5.68,4.81,15.27,16.6,28.1,26.6,6.94,7.63,7.54
+620342,Men's cotton trousers,False,2,Mexico,MEX,15.88,10.7,10.64,0.56,107.25,16.6,16.6,16.6,12.48,12.48,12.48
+620342,Men's cotton trousers,False,3,Viet Nam,VNM,8.8,8.13,7.93,2.48,57.41,16.6,28.1,29.1,9.48,10.41,10.5
+620342,Men's cotton trousers,False,4,Pakistan,PAK,8.79,7.66,7.32,4.62,48.25,16.6,27.7,26.6,8.93,9.78,9.69
+620342,Men's cotton trousers,False,5,China,CHN,6.29,5.16,4.92,4.89,0.0,24.1,58.4,36.6,6.41,8.18,7.05
+620342,Men's cotton trousers,False,6,Egypt,EGY,3.69,8.9,8.55,4.12,72.37,16.6,24.0,26.6,10.38,11.04,11.27
+620462,Women's cotton trousers,False,1,Bangladesh,BGD,19.03,6.43,6.07,5.87,53.11,16.6,28.1,26.6,7.49,8.23,8.14
+620462,Women's cotton trousers,False,2,Viet Nam,VNM,17.62,8.59,8.31,3.3,104.6,16.6,28.1,29.1,10.01,11.0,11.09
+620462,Women's cotton trousers,False,3,China,CHN,16.81,4.2,3.98,5.38,0.0,24.1,58.4,36.6,5.21,6.65,5.73
+620462,Women's cotton trousers,False,4,Pakistan,PAK,11.0,8.04,7.57,6.21,91.5,16.6,27.7,26.6,9.37,10.27,10.18
+620462,Women's cotton trousers,False,5,Cambodia,KHM,8.09,7.73,7.44,3.87,84.04,16.6,27.7,26.6,9.01,9.87,9.78
+620462,Women's cotton trousers,False,6,Türkiye,TUR,3.92,22.18,20.92,6.03,428.31,16.6,24.0,26.6,25.86,27.5,28.08
+620630,Women's cotton blouses,False,1,India,IND,37.65,8.63,8.27,4.36,59.65,15.4,37.8,25.4,9.96,11.89,10.82
+620630,Women's cotton blouses,False,2,Indonesia,IDN,12.57,7.65,7.41,3.23,41.63,15.4,26.5,25.4,8.83,9.68,9.6
+620630,Women's cotton blouses,False,3,China,CHN,11.28,5.4,5.12,5.51,0.0,22.9,57.2,35.4,6.64,8.5,7.32
+620630,Women's cotton blouses,False,4,Bangladesh,BGD,9.79,6.05,5.74,5.38,11.96,15.4,26.9,25.4,6.98,7.68,7.59
+620630,Women's cotton blouses,False,5,Viet Nam,VNM,8.59,8.26,8.04,2.73,52.88,15.4,26.9,27.9,9.53,10.48,10.57
+620630,Women's cotton blouses,False,6,Italy,ITA,4.19,43.3,42.2,2.61,701.2,15.4,18.8,15.4,49.97,51.44,49.97
+640299,"Footwear, rubber/plastic uppers (other)",False,1,China,CHN,53.01,5.98,5.66,5.74,0.0,27.5,61.8,40.0,7.63,9.68,8.38
+640299,"Footwear, rubber/plastic uppers (other)",False,2,Viet Nam,VNM,26.21,12.46,11.99,3.91,108.17,20.0,31.5,32.5,14.95,16.38,16.51
+640299,"Footwear, rubber/plastic uppers (other)",False,3,Indonesia,IDN,9.22,10.91,10.51,3.82,82.27,20.0,31.1,30.0,13.09,14.3,14.18
+640299,"Footwear, rubber/plastic uppers (other)",False,4,Cambodia,KHM,3.49,7.66,7.36,4.1,28.06,20.0,31.1,30.0,9.2,10.05,9.96
+640299,"Footwear, rubber/plastic uppers (other)",False,5,Germany,DEU,3.02,21.33,20.77,2.72,256.46,20.0,23.4,20.0,25.6,26.32,25.6
+640299,"Footwear, rubber/plastic uppers (other)",False,6,Italy,ITA,1.66,26.45,25.4,4.16,342.0,20.0,23.4,20.0,31.74,32.64,31.74
+640391,Leather footwear covering ankle,True,1,Viet Nam,VNM,30.3,28.76,28.06,2.52,47.83,8.5,20.0,21.0,31.21,34.51,34.8
+640391,Leather footwear covering ankle,True,2,China,CHN,26.78,26.96,26.17,3.04,38.56,16.0,50.3,28.5,31.27,40.52,34.64
+640391,Leather footwear covering ankle,True,3,Indonesia,IDN,11.86,19.46,19.0,2.39,0.0,8.5,19.6,18.5,21.11,23.27,23.06
+640391,Leather footwear covering ankle,True,4,Cambodia,KHM,7.46,33.69,32.45,3.82,73.16,8.5,19.6,18.5,36.55,40.29,39.92
+640391,Leather footwear covering ankle,True,5,Mexico,MEX,4.63,42.15,41.76,0.93,116.62,8.5,8.5,8.5,45.73,45.73,45.73
+640391,Leather footwear covering ankle,True,6,Bangladesh,BGD,4.07,33.05,31.98,3.34,69.84,8.5,20.0,18.5,35.86,39.66,39.16
+640399,Leather footwear (other),True,1,Viet Nam,VNM,39.02,19.08,18.49,3.23,15.9,8.5,20.0,21.0,20.7,22.9,23.09
+640399,Leather footwear (other),True,2,China,CHN,18.93,16.47,15.87,3.74,0.0,16.0,50.3,28.5,19.1,24.75,21.16
+640399,Leather footwear (other),True,3,Indonesia,IDN,13.98,17.08,16.52,3.37,3.75,8.5,19.6,18.5,18.53,20.43,20.24
+640399,Leather footwear (other),True,4,Italy,ITA,9.24,135.19,131.46,2.83,721.03,8.5,14.52,10.0,146.68,154.81,148.7
+640399,Leather footwear (other),True,5,India,IND,3.58,17.32,16.57,4.5,5.18,8.5,30.9,18.5,18.79,22.67,20.52
+640399,Leather footwear (other),True,6,Germany,DEU,3.47,43.28,42.06,2.9,162.84,8.5,14.52,10.0,46.96,49.56,47.61
+640411,"Sports footwear, textile uppers",False,1,Viet Nam,VNM,65.1,20.6,19.87,3.65,99.58,20.0,31.5,32.5,24.72,27.09,27.29
+640411,"Sports footwear, textile uppers",False,2,China,CHN,16.12,13.14,12.66,3.79,27.29,27.5,61.8,40.0,16.75,21.26,18.39
+640411,"Sports footwear, textile uppers",False,3,Indonesia,IDN,15.6,17.42,16.8,3.68,68.79,20.0,31.1,30.0,20.91,22.84,22.65
+640411,"Sports footwear, textile uppers",False,4,Italy,ITA,1.44,113.33,110.31,2.74,998.0,20.0,23.4,20.0,135.99,139.84,135.99
+640411,"Sports footwear, textile uppers",False,5,Cambodia,KHM,1.1,10.32,10.0,3.17,0.0,20.0,31.1,30.0,12.39,13.53,13.42
+640411,"Sports footwear, textile uppers",False,6,India,IND,0.29,14.1,13.34,5.71,36.64,20.0,42.4,30.0,16.92,20.08,18.33
+640419,"Other footwear, textile uppers",False,1,China,CHN,56.57,7.33,6.97,5.23,0.0,27.5,61.8,40.0,9.35,11.87,10.27
+640419,"Other footwear, textile uppers",False,2,Viet Nam,VNM,27.14,14.51,14.15,2.55,97.84,20.0,31.5,32.5,17.41,19.08,19.23
+640419,"Other footwear, textile uppers",False,3,Italy,ITA,4.72,74.68,72.32,3.27,918.24,20.0,23.4,20.0,89.62,92.15,89.62
+640419,"Other footwear, textile uppers",False,4,Cambodia,KHM,4.12,9.92,9.5,4.4,35.2,20.0,31.1,30.0,11.9,13.0,12.89
+640419,"Other footwear, textile uppers",False,5,Indonesia,IDN,2.68,12.52,11.83,5.83,70.73,20.0,31.1,30.0,15.03,16.42,16.28
+640419,"Other footwear, textile uppers",False,6,Spain,ESP,0.64,47.02,45.29,3.8,541.05,20.0,23.4,20.0,56.42,58.02,56.42
+851830,Headphones/earphones,False,1,China,CHN,48.3,10.41,10.14,2.61,0.0,7.5,41.8,20.0,11.19,14.76,12.49
+851830,Headphones/earphones,False,2,Viet Nam,VNM,43.27,50.02,48.98,2.13,380.68,0.0,11.5,12.5,50.02,55.78,56.28
+851830,Headphones/earphones,False,3,Mexico,MEX,2.14,35.14,35.07,0.2,237.68,0.0,0.0,0.0,35.14,35.14,35.14
+851830,Headphones/earphones,False,4,Thailand,THA,1.83,68.87,66.28,3.91,561.79,0.0,11.1,12.5,68.87,76.52,77.48
+851830,Headphones/earphones,False,5,Malaysia,MYS,1.81,45.38,44.37,2.29,336.07,0.0,11.1,10.0,45.38,50.42,49.92
+851830,Headphones/earphones,False,6,Philippines,PHL,0.44,20.23,19.73,2.53,94.43,0.0,11.1,10.0,20.23,22.48,22.26
+871200,Bicycles,False,1,China,CHN,41.89,48.05,43.82,9.65,0.0,36.0,70.3,48.5,65.34,81.82,71.35
+871200,Bicycles,False,2,Taiwan,S19,28.99,910.12,892.45,1.98,1794.25,11.0,22.5,11.0,1010.23,1114.89,1010.23
+871200,Bicycles,False,3,Cambodia,KHM,17.25,203.98,195.15,4.53,324.56,11.0,22.1,21.0,226.42,249.06,246.82
+871200,Bicycles,False,4,Viet Nam,VNM,4.73,583.67,568.61,2.65,1114.81,11.0,22.5,23.5,647.87,714.99,720.83
+871200,Bicycles,False,5,Indonesia,IDN,1.79,346.32,335.37,3.26,620.81,11.0,22.1,21.0,384.42,422.86,419.05
+871200,Bicycles,False,6,Italy,ITA,1.13,254.52,247.7,2.76,429.74,11.0,16.01,11.0,282.52,295.26,282.52
+940161,"Upholstered seats, wooden frame",False,1,Viet Nam,VNM,45.77,139.75,116.55,19.9,92.79,0.0,16.91,25.0,139.75,163.38,174.68
+940161,"Upholstered seats, wooden frame",False,2,China,CHN,26.86,72.49,60.16,20.49,0.0,25.0,64.71,50.0,90.61,119.4,108.73
+940161,"Upholstered seats, wooden frame",False,3,Mexico,MEX,9.49,240.93,238.35,1.08,232.37,0.0,5.41,25.0,240.93,253.97,301.16
+940161,"Upholstered seats, wooden frame",False,4,Italy,ITA,4.02,246.12,232.57,5.82,239.53,0.0,14.85,15.0,246.12,282.66,283.03
+940161,"Upholstered seats, wooden frame",False,5,Canada,CAN,2.95,197.17,194.45,1.4,172.0,0.0,5.41,25.0,197.17,207.84,246.46
+940161,"Upholstered seats, wooden frame",False,6,Cambodia,KHM,2.75,294.81,259.79,13.48,306.71,0.0,16.51,25.0,294.81,343.49,368.52
+940171,"Upholstered seats, metal frame",False,1,China,CHN,57.61,20.77,17.65,17.68,0.0,25.0,59.3,37.5,25.96,33.08,28.55
+940171,"Upholstered seats, metal frame",False,2,Viet Nam,VNM,12.97,97.45,85.32,14.22,369.28,0.0,11.5,12.5,97.45,108.66,109.63
+940171,"Upholstered seats, metal frame",False,3,Canada,CAN,8.13,277.57,275.09,0.9,1236.68,0.0,0.0,0.0,277.57,277.57,277.57
+940171,"Upholstered seats, metal frame",False,4,Mexico,MEX,7.69,124.96,123.67,1.05,501.78,0.0,0.0,0.0,124.96,124.96,124.96
+940171,"Upholstered seats, metal frame",False,5,Italy,ITA,4.42,337.03,320.55,5.14,1523.03,0.0,9.44,10.0,337.03,368.84,370.74
+940171,"Upholstered seats, metal frame",False,6,Taiwan,S19,1.13,29.69,26.61,11.59,42.99,0.0,11.5,10.0,29.69,33.11,32.66
+940350,Wooden bedroom furniture,True,1,Viet Nam,VNM,55.41,120.36,105.47,14.11,136.86,0.0,11.5,12.5,120.36,134.2,135.41
+940350,Wooden bedroom furniture,True,2,Malaysia,MYS,12.35,50.81,42.86,18.56,0.0,0.0,11.1,10.0,50.81,56.46,55.9
+940350,Wooden bedroom furniture,True,3,Italy,ITA,4.97,66.61,60.7,9.74,31.09,0.0,9.44,10.0,66.61,72.9,73.27
+940350,Wooden bedroom furniture,True,4,Indonesia,IDN,4.75,192.82,173.14,11.37,279.46,0.0,11.1,10.0,192.82,214.23,212.1
+940350,Wooden bedroom furniture,True,5,China,CHN,4.11,66.57,59.61,11.67,31.0,25.0,59.3,37.5,83.21,106.05,91.53
+940350,Wooden bedroom furniture,True,6,Canada,CAN,2.72,162.7,159.89,1.75,220.18,0.0,0.0,0.0,162.7,162.7,162.7
+940360,Wooden furniture (other),False,1,Viet Nam,VNM,38.67,87.79,78.69,11.57,457.44,0.0,11.5,12.5,87.79,97.89,98.77
+940360,Wooden furniture (other),False,2,China,CHN,16.09,18.57,15.4,20.62,17.92,25.0,59.3,37.5,23.22,29.59,25.54
+940360,Wooden furniture (other),False,3,Mexico,MEX,6.5,53.72,52.98,1.39,241.08,0.0,0.0,0.0,53.72,53.72,53.72
+940360,Wooden furniture (other),False,4,Canada,CAN,5.91,15.75,15.51,1.55,0.0,0.0,0.0,0.0,15.75,15.75,15.75
+940360,Wooden furniture (other),False,5,Indonesia,IDN,5.22,94.24,86.09,9.46,498.37,0.0,11.1,10.0,94.24,104.7,103.66
+940360,Wooden furniture (other),False,6,India,IND,4.9,54.56,48.62,12.21,246.41,0.0,22.4,10.0,54.56,66.78,60.01
+940429,Mattresses (other materials),False,1,Indonesia,IDN,35.73,70.54,65.22,8.16,104.02,6.0,17.1,16.0,74.78,82.61,81.83
+940429,Mattresses (other materials),False,2,Mexico,MEX,22.6,97.34,91.87,5.95,181.5,6.0,6.0,6.0,103.18,103.18,103.18
+940429,Mattresses (other materials),False,3,Rep. of Korea,KOR,5.69,108.63,102.58,5.9,214.17,6.0,13.02,12.5,115.15,122.78,122.21
+940429,Mattresses (other materials),False,4,Singapore,SGP,5.31,49.91,44.17,13.0,44.34,6.0,13.4,16.0,52.9,56.6,57.9
+940429,Mattresses (other materials),False,5,Canada,CAN,4.79,57.96,56.66,2.29,67.63,6.0,6.0,6.0,61.44,61.44,61.44
+940429,Mattresses (other materials),False,6,Cambodia,KHM,3.87,34.58,32.03,7.94,0.0,6.0,17.1,16.0,36.65,40.49,40.11
+950490,"Games (board, etc.)",False,1,China,CHN,74.37,4.76,4.41,7.85,0.0,7.5,41.8,20.0,5.11,6.75,5.71
+950490,"Games (board, etc.)",False,2,Viet Nam,VNM,5.09,6.93,6.67,3.87,45.66,0.0,11.5,12.5,6.93,7.73,7.79
+950490,"Games (board, etc.)",False,3,Mexico,MEX,4.8,9.17,9.12,0.59,92.8,0.0,0.0,0.0,9.17,9.17,9.17
+950490,"Games (board, etc.)",False,4,Germany,DEU,1.88,8.34,8.07,3.32,75.34,0.0,9.44,10.0,8.34,9.13,9.17
+950490,"Games (board, etc.)",False,5,Japan,JPN,1.49,11.21,11.03,1.67,135.71,0.0,9.44,12.5,11.21,12.27,12.61
+950490,"Games (board, etc.)",False,6,India,IND,1.45,5.41,5.15,5.03,13.7,0.0,22.4,10.0,5.41,6.62,5.95
