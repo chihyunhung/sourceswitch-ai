@@ -107,17 +107,17 @@ details summary{cursor:pointer;color:var(--muted);font-size:13px}
 <div class="wrap">
 <header>
 <div><h1>Source<span>Switch</span> AI</h1><p>Should a tariff change change your supplier country? Prototype on U.S. import benchmarks (UN Comtrade 2024, USITC DataWeb 2025) across 5 industries.</p></div>
-<div class="steps"><span><b>1</b> Pick a product</span><span><b>2</b> Pick countries, enter quotes</span><span><b>3</b> Read the flag</span><span><b>4</b> Simulate and ask</span></div>
+<div class="steps"><span>📦 <b>1</b> Pick a product</span><span>🌏 <b>2</b> Pick countries, enter quotes</span><span>🎯 <b>3</b> Read the flag</span><span>🧪 <b>4</b> Simulate and ask</span></div>
 </header>
 
 <section>
-<p class="eyebrow step">Step 1 · Product category</p>
+<p class="eyebrow step">📦 Step 1 · Product category</p>
 <div class="pills" id="pills"></div>
 </section>
 
 <div class="grid">
 <section class="col">
-<p class="eyebrow step">Step 2 · Your current origin, the alternatives you want to compare, and your quotes</p>
+<p class="eyebrow step">🌏 Step 2 · Your current origin, the alternatives you want to compare, and your quotes</p>
 <div class="origin"><h3><span>Current origin</span><span class="tag cur">Current</span></h3>
 <select id="curSel" aria-label="Current origin"></select>
 <div class="chip" id="curChip"></div>
@@ -134,7 +134,7 @@ details summary{cursor:pointer;color:var(--muted);font-size:13px}
 
 <div class="col">
 <section class="col">
-<p class="eyebrow step">Step 3 · Decision</p>
+<p class="eyebrow step">🎯 Step 3 · Decision</p>
 <div class="verdict"><div class="flag"><span class="dot" id="dot"></span><span id="flag">Stay</span></div><p id="why"></p></div>
 <div class="kpis">
 <div class="kpi"><div class="v" id="savings"></div><div class="l" id="savLbl">savings on this order vs current, after switching cost</div></div>
@@ -146,17 +146,17 @@ details summary{cursor:pointer;color:var(--muted);font-size:13px}
 <div class="prices"><div><small id="pCurLbl"></small><div class="v" id="pCur"></div><small>suggested selling price / unit</small></div><div><small id="pAltLbl"></small><div class="v" id="pAlt"></div><small>suggested selling price / unit</small></div></div></div>
 </section>
 <section id="assist" class="col">
-<p class="eyebrow step">Step 4 · Simulate and ask</p>
+<p class="eyebrow step">🧪 Step 4 · Simulate and ask</p>
 <h2>Stress-test the decision</h2>
-<p class="eyebrow" style="margin-top:4px">Simulation · set a tariff for each country</p>
+<p class="eyebrow" style="margin-top:4px">🎚️ Simulation · set a tariff for each country</p>
 <div class="sims" id="sims"></div>
 <div class="simout" id="simout"></div>
 <div class="chartbox">
-<div class="chartHead"><div><p class="eyebrow" style="margin:0">Tipping point</p><p id="xoTitle" style="margin:0;font-size:14px;color:var(--muted)"></p></div><label style="flex-direction:row;align-items:center;gap:6px;white-space:nowrap">Vary tariff of<select id="xoSel" style="width:auto"></select></label></div><div class="legend" id="xoLegend"></div>
+<div class="chartHead"><div><p class="eyebrow" style="margin:0">📈 Tipping point</p><p id="xoTitle" style="margin:0;font-size:14px;color:var(--muted)"></p></div><label style="flex-direction:row;align-items:center;gap:6px;white-space:nowrap">Vary tariff of<select id="xoSel" style="width:auto"></select></label></div><div class="legend" id="xoLegend"></div>
 <svg id="xover" viewBox="0 0 640 240" role="img" aria-label="Landed cost per unit by origin as the tariff on the current origin changes"></svg>
 </div>
 <div id="assistBlock" class="col" hidden>
-<p class="eyebrow" style="margin-top:8px">Assistant</p>
+<p class="eyebrow" style="margin-top:8px">💬 Assistant</p>
 <div class="chips">
 <button class="pill" data-q="Explain this decision in plain language: why this flag, what the break-even tariff means for me, and what would change the answer.">Explain this decision</button>
 <button class="pill" data-q="What does the break-even tariff mean, and how close are we to it?">What is break-even?</button>
