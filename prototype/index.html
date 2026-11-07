@@ -88,6 +88,7 @@ details summary{cursor:pointer;color:var(--muted);font-size:13px}
 #xover text{fill:var(--muted);font-size:11px;font-variant-numeric:tabular-nums}
 #xover .grid{stroke:var(--line);stroke-width:1}
 #xover .axis{stroke:var(--muted);stroke-width:1}
+.nego{border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:10px;padding:12px 14px}
 .margin{border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:flex;flex-direction:column;gap:10px}
 .margin label{flex-direction:row;align-items:center;gap:10px;font-size:13px}.margin label b{color:var(--fg)}
 .margin input[type=range]{padding:0;height:24px;accent-color:var(--orange);flex:1}
@@ -154,6 +155,8 @@ details summary{cursor:pointer;color:var(--muted);font-size:13px}
 </div>
 <div class="tablewrap"><table id="rank"><thead><tr><th>#</th><th>Origin</th><th class="num">Tariff</th><th class="num">FOB quote</th><th class="num">Landed / unit</th><th class="num">Order total</th><th class="num">vs current</th><th>Flag</th></tr></thead><tbody></tbody></table></div>
 <p class="note">Landed = FOB × (1 + tariff) + freight. Order total for alternatives includes the one-time switching cost. Switch: more than 3% cheaper. Renegotiate: within 3% either way. Stay: current is more than 3% cheaper.</p>
+<div class="nego" id="nego"><p class="eyebrow" style="margin:0 0 4px">Negotiation target</p><p id="negoText" style="margin:0 0 8px;font-size:14px;color:var(--muted)"></p>
+<div class="prices"><div><small>Match the best alternative</small><div class="v" id="negoMatch"></div><small id="negoMatchSub"></small></div><div><small>Beat it by 3% (clear Stay)</small><div class="v" id="negoBeat"></div><small id="negoBeatSub"></small></div></div></div>
 <div class="margin"><label>Target gross margin <b id="mVal">30%</b><input id="margin" type="range" min="5" max="80" step="1" value="30"></label>
 <div class="prices"><div><small id="pCurLbl"></small><div class="v" id="pCur"></div><small>suggested selling price / unit</small></div><div><small id="pAltLbl"></small><div class="v" id="pAlt"></div><small>suggested selling price / unit</small></div></div></div>
 </section>
@@ -231,6 +234,16 @@ function render(){buildPills();const d=DATA[hs];const qty=Math.max(1,+$('qty').v
     else why=`${cur} still lands ${Math.abs(b.pct).toFixed(1)}% cheaper than the best alternative (${b.n}). Switching pays only if the tariff on ${cur} rises above ${beT.toFixed(1)}%${rows.length>1?' or another quote improves':''}.`;}
   $('flag').textContent=flag;$('dot').style.background=color;$('why').textContent=why;$('savings').textContent=sav;$('savings').style.color=sav.startsWith('−')?'var(--bad)':'var(--good)';$('breakeven').textContent=be;$('beLbl').textContent=beL;
   drawChart();
+  // negotiation target: FOB the current supplier must offer to keep the order
+  (function(){const cc=calc();const b=cc.alternatives[0];const box=$('nego');if(!b){box.hidden=true;return;}box.hidden=false;
+    const tarC=c.tariff2026/100,frtC=q[cur].frt,qty2=cc.qty;
+    const fobFor=target=>((target/qty2)-frtC)/(1+tarC);
+    const match=fobFor(b.orderTotal),beat=fobFor(b.orderTotal*0.97);
+    const disc=x=>(q[cur].fob>0?(1-x/q[cur].fob)*100:0);
+    $('negoMatch').textContent=fmt(Math.max(0,match));$('negoBeat').textContent=fmt(Math.max(0,beat));
+    $('negoMatchSub').textContent=disc(match)>0?`${disc(match).toFixed(1)}% below your current quote (${fmt(q[cur].fob)})`:`your quote already beats it by ${(-disc(match)).toFixed(1)}%`;
+    $('negoBeatSub').textContent=disc(beat)>0?`${disc(beat).toFixed(1)}% below your current quote`:`no concession needed`;
+    $('negoText').textContent=cc.flag==='Switch'?`If you would rather not switch, ${cur} has to close the gap with ${b.origin}. Ask for this FOB:`:cc.flag==='Renegotiate'?`${b.origin} is within 3%. Use its quote as leverage; this is the ${cur} FOB that settles it:`:`${cur} already wins. These are the prices at which ${b.origin} would catch up, your headroom in the talk:`;})();
   $('benchTitle').textContent=d.name+(d.tsrc==='hs6'?' · all origins, 2024 market averages':' · all origins, 2025 USITC averages');const br=d.origins.map(o=>({o,l:landed(o.fob,o.freight,o.tariff2026)})).sort((x,y)=>x.l-y.l);const max=br[br.length-1].l;
   const bb=$('bench').querySelector('tbody');bb.innerHTML='';br.forEach(r=>{const tr=document.createElement('tr');tr.className=r.o.country===cur?'cur':alts.includes(r.o.country)?'best':'';tr.innerHTML=`<td>${r.o.country}</td><td class="num">${r.o.share.toFixed(1)}%</td><td class="num">${fmt(r.o.fob)}</td><td class="num">${fmt(r.o.freight)}</td><td class="num">${r.o.tariff2026.toFixed(1)}%</td><td class="num"><b>${fmt(r.l)}</b></td><td><div class="bar"><i style="width:${Math.max(4,r.l/max*100)}%;background:${r.o.country===cur?'var(--blue)':alts.includes(r.o.country)?'var(--orange)':'var(--muted)'}"></i></div></td>`;bb.appendChild(tr);});}
 
