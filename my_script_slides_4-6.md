@@ -1,13 +1,13 @@
-# My part — slides 4, 5, 6 (about 65 seconds)
+# My part — slides 4, 5, 6 (about 60 seconds)
 
 ## Transition from slide 3 (after Sean finishes the dataset)
 Thanks, Sean. So with that data, the first thing we asked was: who actually needs this?
 
-## Slide 4 · Screening (35 s)
+## Slide 4 · Screening (30 s)
 Not every product does. If China is three hundred percent cheaper on headphones, no tariff changes the answer.
 So we ran one rule on both datasets. Step one: keep categories where the two cheapest origins are within twenty percent on unit cost. Step two: keep the ones where three or more countries sit that close.
 Consumer goods: thirty-six pulled, twenty-three comparable, seven near-tied, four multi-country. Industrial goods: thirteen curated, seven near-tied, five multi-country.
-Why closeness? Because the break-even tariff is simply the cost gap. A four percent gap flips on a four-point tariff move. A three-hundred percent gap never does.
+Why closeness? Because the break-even tariff is just the cost gap: a four-percent gap flips on a four-point tariff move.
 （重點只有一句：損益兩平 = 成本差距。數字念慢一點，手指著漏斗）
 
 ## Slide 5 · Nine categories (15 s)
