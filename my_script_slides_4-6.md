@@ -1,4 +1,4 @@
-# My part — slides 4, 5, 6 (about 60 seconds)
+# My part — slides 4, 5, 6 (about 65 seconds)
 
 ## Transition from slide 3 (after Sean finishes the dataset)
 Thanks, Sean. So with that data, the first thing we asked was: who actually needs this?
@@ -10,11 +10,11 @@ Consumer goods: thirty-six pulled, twenty-three comparable, seven near-tied, fou
 Why closeness? Because the break-even tariff is just the cost gap: a four-percent gap flips on a four-point tariff move.
 （重點只有一句：損益兩平 = 成本差距。數字念慢一點，手指著漏斗）
 
-## Slide 5 · Nine categories (15 s)
-That leaves nine categories in five industries, from apparel and footwear to auto parts and electronics. In every one of them the two cheapest origins are within twelve percent on cost.
-And for the industrial five we know the duty each country actually paid in 2025: China paid thirty to fifty points more than its cheapest rival.
-These importers are a few percent away from a different answer. They are our first customers.
-（不用唸類別名稱，手掃過卡片即可；強調「12% 內」和「實繳關稅差 30–50 點」兩個數字）
+## Slide 5 · Nine categories (20 s)
+That leaves nine categories in five industries, from apparel and footwear to auto parts and electronics. In all of them, the cheapest country and the runner-up are close: one to twelve percent apart on cost.
+Now look at the orange cards. For these industrial products we have the real duty each country paid in 2025. Take brake hoses: Mexico and China are two percent apart on price, but China paid fifty percent duty and Mexico paid nine. That turns a two-percent gap into a forty-percent gap in landed cost.
+So in these markets a tariff does not just matter. It is the whole decision. These importers are our first customers.
+（第一段手掃九張卡；第二段指煞車油管那張卡唸 50% vs 9%；最後一句看評審）
 
 ## Slide 6 · Hand-off to the role-play demo (15 s)
 So let me make it concrete. Meet Jeannie. She owns a small clothing store and buys ten thousand cotton T-shirts an order from China. The tariff on China just changed, and Vietnam and Bangladesh are on her list. Stay, switch, or renegotiate?
