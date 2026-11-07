@@ -16,10 +16,10 @@ And for the industrial five we know the duty each country actually paid in 2025:
 These importers are a few percent away from a different answer. They are our first customers.
 （不用唸類別名稱，手掃過卡片即可；強調「12% 內」和「實繳關稅差 30–50 點」兩個數字）
 
-## Slide 6 · Demo hand-off (15 s)
-So let me make it concrete. Meet Jeannie. She runs a small clothing store and buys ten thousand cotton T-shirts an order from China. The tariff on China just changed. Vietnam and Bangladesh are on her list. Stay, switch, or renegotiate?
-Let’s ask SourceSwitch.
-（最後一句停一拍，再切到 demo）
+## Slide 6 · Hand-off to the role-play demo (15 s)
+So let me make it concrete. Meet Jeannie. She owns a small clothing store and buys ten thousand cotton T-shirts an order from China. The tariff on China just changed, and Vietnam and Bangladesh are on her list. Stay, switch, or renegotiate?
+Jeannie, your team has the tool. Over to you.
+（最後一句轉身看向扮演 Jeannie 和員工的隊友，停一拍，他們接手操作 prototype）
 
 ## If you get a question
 - Why 20%? “It is the range a realistic tariff or currency move can cover within a year.”
