@@ -17,9 +17,9 @@ So in these markets a tariff does not just matter. It is the whole decision. The
 （第一段手掃九張卡；第二段指煞車油管那張卡唸 50% vs 9%；最後一句看評審）
 
 ## Slide 6 · Hand-off to the role-play demo (15 s)
-So let me make it concrete. Meet Jeannie. She owns a small clothing store and buys ten thousand cotton T-shirts an order from China. The tariff on China just changed, and Vietnam and Bangladesh are on her list. Stay, switch, or renegotiate?
-Jeannie, Flora has the tool. Over to you.
-（最後一句轉身看向扮演 Jeannie 的隊友和 Flora，停一拍，他們接手操作 prototype）
+Now we’d like to show you the tool with a live demo. Let’s say the business case is this: Jeannie owns a small clothing store and buys ten thousand cotton T-shirts an order from China. The tariff on China just changed, and Vietnam and Bangladesh are on her list. Should she stay, switch, or renegotiate?
+Jeannie, Flora, over to you.
+（「Let’s say the business case is this」之後指投影片上的三張卡；最後一句轉向隊友，停一拍）
 
 ## If you get a question
 - Why 20%? “It is the range a realistic tariff or currency move can cover within a year.”
