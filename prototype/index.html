@@ -128,11 +128,12 @@ details summary{cursor:pointer;color:var(--muted);font-size:13px}
 <select id="curSel" aria-label="Current origin"></select>
 <div class="chip" id="curChip"></div>
 <label>Your FOB quote ($/unit) <small id="curMkt"></small><input id="curFob" type="number" step="0.01" min="0"></label>
+<label>Freight + insurance ($/unit) <small id="curFrtMkt"></small><input id="curFrt" type="number" step="0.01" min="0"></label>
 </div>
 <label>Alternatives to compare (add as many as you like)<select id="altAdd"></select></label>
 <div class="alts" id="alts"></div>
 <label>Order quantity (units)<input id="qty" type="number" min="1" step="100" value="10000"></label>
-<details><summary>Advanced: freight per unit and one-time switching cost (prefilled from market data)</summary>
+<details><summary>Advanced: one-time switching cost</summary>
 <div class="fields" style="margin-top:10px" id="adv"></div>
 </details>
 <p class="note">Tariffs are applied automatically: consumer categories use the SourceSwitch 2026 tariff table (MFN plus duties in force since Jul 24, 2026); industrial categories use the 2025 effective duty actually paid per origin (USITC DataWeb). Quotes are prefilled with the market average so the benchmark answer shows before you type.</p>
@@ -200,11 +201,11 @@ function init(){const d=DATA[hs];q={};sim={};xo=null;d.origins.forEach(o=>q[o.co
 function buildPills(){const p=$('pills');p.innerHTML='';const groups={};for(const k in DATA){(groups[DATA[k].industry]??=[]).push(k);}for(const g in groups){const row=document.createElement('div');row.className='pillrow';const lab=document.createElement('span');lab.className='grp';lab.textContent=g;row.appendChild(lab);groups[g].forEach(k=>{const b=document.createElement('button');b.className='pill';b.textContent=DATA[k].name;b.title=(DATA[k].tsrc==='hs6'?'HS ':'HTS ')+k;b.setAttribute('aria-pressed',k===hs);b.onclick=()=>{hs=k;init();render();};row.appendChild(b);});p.appendChild(row);}}
 function buildStep2(){const d=DATA[hs];buildSims();
   const s=$('curSel');s.innerHTML='';d.origins.forEach(o=>{const op=document.createElement('option');op.value=o.country;op.textContent=o.country;op.selected=o.country===cur;s.appendChild(op);});
-  $('curChip').innerHTML=chip(O(cur));$('curMkt').textContent='· market avg '+fmt(O(cur).fob);$('curFob').value=q[cur].fob;
+  $('curChip').innerHTML=chip(O(cur));$('curMkt').textContent='· market avg '+fmt(O(cur).fob);$('curFob').value=q[cur].fob;$('curFrtMkt').textContent='· market avg '+fmt(O(cur).freight);$('curFrt').value=q[cur].frt;
   const add=$('altAdd');add.innerHTML='<option value="">Add an alternative…</option>';d.origins.filter(o=>o.country!==cur&&!alts.includes(o.country)).forEach(o=>{const op=document.createElement('option');op.value=o.country;op.textContent=o.country;add.appendChild(op);});
   add.onchange=e=>{if(e.target.value){alts.push(e.target.value);buildStep2();render();}};
-  const a=$('alts');a.innerHTML='';alts.forEach(n=>{const o=O(n);const box=document.createElement('div');box.className='origin';box.innerHTML=`<h3><span>${n}</span><span style="display:flex;gap:6px;align-items:center"><span class="tag alt">Alternative</span><button class="rm" aria-label="Remove ${n}" title="Remove">✕</button></span></h3><div class="chip">${chip(o)}</div><label>Supplier FOB quote ($/unit) <small>· market avg ${fmt(o.fob)}</small><input type="number" step="0.01" min="0" value="${q[n].fob}" id="fob-${n.replace(/\W/g,'_')}"></label>`;box.querySelector('input').oninput=e=>{q[n].fob=+e.target.value||0;render();};box.querySelector('.rm').onclick=()=>{alts=alts.filter(x=>x!==n);buildStep2();render();};a.appendChild(box);});
-  const adv=$('adv');adv.innerHTML='';[cur,...alts].forEach(n=>{const l=document.createElement('label');l.innerHTML=`Freight + ins., ${n} ($/unit)<input type="number" step="0.01" min="0" value="${q[n].frt}" id="frt-${n.replace(/\W/g,'_')}">`;l.querySelector('input').oninput=e=>{q[n].frt=+e.target.value||0;render();};adv.appendChild(l);});
+  const a=$('alts');a.innerHTML='';alts.forEach(n=>{const o=O(n);const box=document.createElement('div');box.className='origin';box.innerHTML=`<h3><span>${n}</span><span style="display:flex;gap:6px;align-items:center"><span class="tag alt">Alternative</span><button class="rm" aria-label="Remove ${n}" title="Remove">✕</button></span></h3><div class="chip">${chip(o)}</div><label>Supplier FOB quote ($/unit) <small>· market avg ${fmt(o.fob)}</small><input type="number" step="0.01" min="0" value="${q[n].fob}" id="fob-${n.replace(/\W/g,'_')}"></label><label>Freight + insurance ($/unit) <small>· market avg ${fmt(o.freight)}</small><input type="number" step="0.01" min="0" value="${q[n].frt}" id="frt-${n.replace(/\W/g,'_')}"></label>`;const ins=box.querySelectorAll('input');ins[0].oninput=e=>{q[n].fob=+e.target.value||0;render();};ins[1].oninput=e=>{q[n].frt=+e.target.value||0;render();};box.querySelector('.rm').onclick=()=>{alts=alts.filter(x=>x!==n);buildStep2();render();};a.appendChild(box);});
+  const adv=$('adv');adv.innerHTML='';
   const sw=document.createElement('label');sw.innerHTML=`One-time switching cost ($)<input type="number" step="100" min="0" value="${window._sw||0}" id="switchCost">`;sw.querySelector('input').oninput=e=>{window._sw=+e.target.value||0;render();};adv.appendChild(sw);}
 function buildSims(){const box=$('sims');box.innerHTML='';[cur,...alts].forEach(n=>{const o=O(n);if(sim[n]==null)sim[n]=o.tariff2026;const row=document.createElement('div');row.className='sim';row.innerHTML=`<span>${n}${n===cur?' <span class="tag cur">current</span>':''}</span><input type="range" min="0" max="100" step="0.5" value="${sim[n]}" aria-label="Simulated tariff on ${n}"><span class="val${Math.abs(sim[n]-o.tariff2026)>0.01?' changed':''}">${sim[n].toFixed(1)}%</span>`;
     const inp=row.querySelector('input'),val=row.querySelector('.val');inp.oninput=e=>{sim[n]=+e.target.value;val.textContent=sim[n].toFixed(1)+'%';val.classList.toggle('changed',Math.abs(sim[n]-o.tariff2026)>0.01);drawChart();};box.appendChild(row);});
@@ -267,6 +268,7 @@ function drawChart(){const d=DATA[hs];const c=O(cur);const qty=Math.max(1,+$('qt
 $('margin').oninput=drawChart;
 $('curSel').onchange=e=>{cur=e.target.value;xo=null;alts=alts.filter(x=>x!==cur);buildStep2();render();};
 $('curFob').oninput=e=>{q[cur].fob=+e.target.value||0;render();};
+$('curFrt').oninput=e=>{q[cur].frt=+e.target.value||0;render();};
 $('qty').oninput=render;
 init();render();
 // ---------- what-if calculator shared by the page and the assistant ----------
