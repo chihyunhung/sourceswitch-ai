@@ -97,7 +97,12 @@ details summary{cursor:pointer;color:var(--muted);font-size:13px}
 .row .bar{height:16px}.row .v{text-align:right;font-variant-numeric:tabular-nums}
 .note{font-size:12px;color:var(--muted);margin:8px 0 0}
 .chips{display:flex;flex-wrap:wrap;gap:8px}
-.chips .pill{font-size:13px;padding:6px 12px}
+.chips .pill{font-size:15px;padding:10px 16px;border-width:1.5px}
+.assistBox{border:2px solid var(--blue);border-radius:14px;padding:18px;gap:14px;background:color-mix(in srgb,var(--blue) 4%,var(--surface))}
+.assistBox .ask input{font-size:16px;padding:12px 14px}
+.assistBox .ask .pill{font-size:15px;padding:10px 18px;background:var(--navy);color:var(--bg);border-color:var(--navy)}
+.assistBox .msg{font-size:15.5px;padding:14px 18px;max-width:none}
+.assistBox .thread{max-height:560px;min-height:0}
 .ask{display:flex;gap:8px;align-items:center}
 .ask input{flex:1}
 .thread{display:flex;flex-direction:column;gap:10px;max-height:420px;overflow-y:auto}
@@ -162,8 +167,9 @@ details summary{cursor:pointer;color:var(--muted);font-size:13px}
 <div class="chartHead"><div><p class="eyebrow" style="margin:0">📈 Tipping point</p><p id="xoTitle" style="margin:0;font-size:14px;color:var(--muted)"></p></div><label style="flex-direction:row;align-items:center;gap:6px;white-space:nowrap">Vary tariff of<select id="xoSel" style="width:auto"></select></label></div><div class="legend" id="xoLegend"></div>
 <svg id="xover" viewBox="0 0 640 240" role="img" aria-label="Landed cost per unit by origin as the tariff on the current origin changes"></svg>
 </div>
-<div id="assistBlock" class="col" hidden>
-<p class="eyebrow" style="margin-top:8px">💬 Assistant</p>
+<div id="assistBlock" class="col assistBox" hidden>
+<h2 style="margin:0;font-size:24px">💬 SourceSwitch Assistant</h2>
+<p style="margin:0;color:var(--muted);font-size:15px">Ask about this decision in plain language, or test a what-if. It uses the numbers on this page.</p>
 <div class="chips">
 <button class="pill" data-q="Explain this decision in plain language: why this flag, what the break-even tariff means for me, and what would change the answer.">Explain this decision</button>
 <button class="pill" data-q="What does the break-even tariff mean, and how close are we to it?">What is break-even?</button>
