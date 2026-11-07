@@ -1,7 +1,7 @@
 # My part — slides 4, 5, 6 (about 75 seconds)
 
-## Transition from slide 3 (teammate finishes the dataset)
-Thanks. So with that data, the first thing we asked was: who actually needs this?
+## Transition from slide 3 (after Sean finishes the dataset)
+Thanks, Sean. So with that data, the first thing we asked was: who actually needs this?
 
 ## Slide 4 · Screening (35 s)
 Not every product does. If China is three hundred percent cheaper on headphones, no tariff changes the answer.
