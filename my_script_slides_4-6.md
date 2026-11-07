@@ -18,8 +18,8 @@ These importers are a few percent away from a different answer. They are our fir
 
 ## Slide 6 · Hand-off to the role-play demo (15 s)
 So let me make it concrete. Meet Jeannie. She owns a small clothing store and buys ten thousand cotton T-shirts an order from China. The tariff on China just changed, and Vietnam and Bangladesh are on her list. Stay, switch, or renegotiate?
-Jeannie, your team has the tool. Over to you.
-（最後一句轉身看向扮演 Jeannie 和員工的隊友，停一拍，他們接手操作 prototype）
+Jeannie, Flora has the tool. Over to you.
+（最後一句轉身看向扮演 Jeannie 的隊友和 Flora，停一拍，他們接手操作 prototype）
 
 ## If you get a question
 - Why 20%? “It is the range a realistic tariff or currency move can cover within a year.”
