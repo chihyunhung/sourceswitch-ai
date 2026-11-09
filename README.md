@@ -6,7 +6,7 @@ Should a tariff change change your supplier country? SourceSwitch AI screens U.S
 
 ## Links
 
-- **Live prototype:** https://claude.ai/artifact/BWTA5qRu6WKmH8hhDSTsG7 (source: [`prototype/index.html`](prototype/index.html))
+- **Live prototype:** https://chihyunhung.github.io/sourceswitch-ai/ (GitHub Pages; source: [`prototype/index.html`](prototype/index.html))
 - **Pitch deck:** https://claude.ai/artifact/ACNnENnr1Zzc1Hx63xu39L (PDF: [`SourceSwitch_AI_Pitch.pdf`](SourceSwitch_AI_Pitch.pdf))
 
 ## Repo map
